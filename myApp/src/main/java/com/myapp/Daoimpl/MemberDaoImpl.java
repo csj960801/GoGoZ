@@ -1,5 +1,7 @@
 package com.myapp.Daoimpl;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.slf4j.*;
@@ -15,41 +17,59 @@ public class MemberDaoImpl implements MemberDAO {
 
 	private Logger MemberDaolog = LoggerFactory.getLogger(MemberDaoImpl.class);
 	private SqlSession session = SessionFactoryGenerator.sessionFactoryInstance().openSession();
-	
+
 	/**
 	 * 회원가입
 	 */
 	@Override
-	public boolean MemberRegister(MemberVO vo) {
-		boolean check = false;
-
-		int insertMember = session.insert("MemberRegister", vo);
-		if (insertMember > 0) {
-			MemberDaolog.info("회원가입성공!");
+	public boolean MemberRegister(Map<String, Object> user) {
+		// TODO Auto-generated method stub
+		int memberReg = session.insert("MemberRegister", user);
+		if (memberReg > 0) {
 			session.commit();
-			check = true;
+			return true;
 		}
-
-		return check;
-	}// end of MemberRegister
+		return false;
+	}
 
 	/**
 	 * 로그인
 	 */
 	@Override
-	public boolean MemberLog(MemberVO vo) {
-		MemberVO login = session.selectOne("memberlog", vo);
-
-		boolean logCheck = false;
-		if (login != null) {
-			MemberDaolog.info("============================");
-			MemberDaolog.info("로그인 이름:" + login.getName());
-			MemberDaolog.info("로그인 이메일:" + login.getEmail());
-			MemberDaolog.info("============================");
-			logCheck = true;
+	public boolean MemberLog(Map<String, Object> user) {
+		// TODO Auto-generated method stub
+		MemberVO member = session.selectOne("memberlog", user);
+		if (member != null) {
+			return true;
 		}
-		return logCheck;
+		return false;
 	}
+
+	/**
+	 * 회원가입(구버전)
+	 * 
+	 * @Override public boolean MemberRegister(MemberVO vo) { boolean check = false;
+	 * 
+	 *           int insertMember = session.insert("MemberRegister", vo); if
+	 *           (insertMember > 0) { MemberDaolog.info("회원가입성공!");
+	 *           session.commit(); check = true; }
+	 * 
+	 *           return check; }// end of MemberRegister
+	 */
+
+	/**
+	 * 로그인(구버전)
+	 * 
+	 * @Override public boolean MemberLog(MemberVO vo) { MemberVO login =
+	 *           session.selectOne("memberlog", vo);
+	 * 
+	 *           boolean logCheck = false; if (login != null) {
+	 *           MemberDaolog.info("============================");
+	 *           MemberDaolog.info("로그인 이름:" + login.getName());
+	 *           MemberDaolog.info("로그인 이메일:" + login.getEmail());
+	 *           MemberDaolog.info("============================"); logCheck = true;
+	 *           } return logCheck; }
+	 */
 
 	/**
 	 * 회원중복검사
@@ -101,4 +121,5 @@ public class MemberDaoImpl implements MemberDAO {
 		}
 		return updateflag;
 	}
+
 }

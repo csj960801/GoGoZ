@@ -2,6 +2,7 @@ package com.myapp.ServiceImpl;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,30 +24,42 @@ public class MemberServiceImpl implements MemberCrudService {
 	private MemberDaoImpl mDao;
 
 	@Override
-	public boolean MemberRegister(MemberVO membervo) {
-		return mDao.MemberRegister(membervo);
-	}// end of MemberRegister
-
-	@Override
-	public boolean MemberLog(MemberVO vo) {
-		return mDao.MemberLog(vo);
+	public boolean MemberRegister(Map<String, Object> user) {
+		// TODO Auto-generated method stub
+		return mDao.MemberRegister(user);
 	}
+	
+	@Override
+	public boolean MemberLog(Map<String, Object> user) {
+		// TODO Auto-generated method stub
+		return mDao.MemberLog(user);
+	}
+	/**
+	 * @Override public boolean MemberRegister(MemberVO membervo) { return
+	 *           mDao.MemberRegister(membervo); }// end of MemberRegister
+	 */
+
+	/**
+	 * @Override public boolean MemberLog(MemberVO vo) { return mDao.MemberLog(vo);
+	 *           }
+	 */
 
 	@Override
 	public boolean MemberDuplicateCheck(MemberVO vo) {
 		// TODO Auto-generated method stub
 		return mDao.MemberDuplicateCheck(vo);
 	}
-	
+
 	@Override
 	public boolean MemberDelete(String email) {
 		// TODO Auto-generated method stub
 		return mDao.MemberDelete(email);
 	}
-	
+
 	@Override
 	public boolean MemberUpdate(UpdateVO vo) {
 		// TODO Auto-generated method stub
 		return mDao.MemberUpdate(vo);
 	}
+
 }

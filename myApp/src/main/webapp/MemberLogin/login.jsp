@@ -3,7 +3,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="/Template/Top.jsp" />
 <jsp:include page="/CustomFrameWork/FrameWork/loginForbidden.jsp" />
-
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfWz0kaAAAAAFoKR_lnDmN75rQMij0df6OokMLw"></script>
+<script>
+   // Secret_key:6LfWz0kaAAAAAHEJY8G2NM6aHsm-o9_C4y7Rzzl2
+   function onSubmit(token) {
+     document.getElementById("captcha").submit();
+   }
+</script>
+<script>
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LfWz0kaAAAAAFoKR_lnDmN75rQMij0df6OokMLw', {action: 'submit'}).then(function(token) {
+              // Add your logic to submit to your backend server here.
+          });
+        });
+      }
+</script>
 <c:if test="${sessionScope.loginName != null || sessionScope.adminSession != null}">
 	<script>
 		alert("로그인이 이미 되어있는 상태입니다.");
@@ -29,12 +46,12 @@
 								<tbody>
 									<tr>
 										<th><label for="login-name">성함</label></th>
-										<td><input type="text" name="name" class="form-control"
+										<td><input type="text" name="name" class="form-control name_form"
 											id="name" autocomplete="off"></td>
 									</tr>
 									<tr>
 										<th><label for="login-email">email</label></th>
-										<td><input type="email" name="email" class="form-control"
+										<td><input type="email" name="email" class="form-control email_form"
 											id="email" autocomplete="off"></td>
 									</tr>
 									<tr>
@@ -63,6 +80,8 @@
 												naver_id_login.setPopup();
 												naver_id_login.init_naver_id_login();
 											</script>
+											
+											<div id="captcha" class="g-recaptcha" data-sitekey="6LfWz0kaAAAAAFoKR_lnDmN75rQMij0df6OokMLw"></div>
 										</td>
 									</tr>
 								</tbody>

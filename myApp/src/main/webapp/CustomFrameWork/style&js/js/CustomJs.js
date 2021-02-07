@@ -78,13 +78,23 @@ function MemberFunction() {
 			alert("입력된 데이터들이 옳지 않는 형식입니다.");
 			return false;		
 		}
-		//document.getElementById("MemberRegFrm").setAttribute("action","/MemberReg/MemberReg.do");
-		//document.getElementById("MemberRegFrm").setAttribute("method","post");
-
-		document.regFrm.action = "/MemberReg/MemberReg.do";
-		document.regFrm.method = "post";
-	    document.regFrm.submit();
-
+		
+		var userdata={"name":name, "email":email};
+		$.ajax({
+		    url:"/MemberReg/MemberReg.do",
+		    data: JSON.stringify(userdata),
+		    contentType:"application/json",
+		    type:"post",
+		    success:function(result){
+		    	console.log(result);
+		    },
+		    error:function(){
+		     	alert("회원가입 실패했습니다.");				    
+		    }
+		});
+		//document.regFrm.action = "/MemberReg/MemberReg.do";
+		//document.regFrm.method = "post";
+	    //document.regFrm.submit();
 	});
 	
 	// 로그인
@@ -116,11 +126,23 @@ function MemberFunction() {
 			
 			return false;		
 		}		
-        
-		document.loginFrm.action = "/MemberLog/MemberLog.do?remember="+encodeURI(rememberName);
-		document.loginFrm.method = "post";
-	    document.loginFrm.submit();
-
+		
+		var logindata = {"name":name, "email":email};
+        $.ajax({
+        	url:"/MemberLog/MemberLog.do",
+        	data:JSON.stringify(logindata),
+        	type:"post",
+        	contentType:"application/json",
+        	success:function(result){
+        		console.log(result);
+        	},
+        	error:function(){
+        		alert("로그인 실패");
+        	}
+        });
+		//document.loginFrm.action = "/MemberLog/MemberLog.do?remember="+encodeURI(rememberName);
+		//document.loginFrm.method = "post";
+	    //document.loginFrm.submit();
 	});
     
 	// 로그아웃

@@ -1,5 +1,7 @@
 package com.myapp.Interceptor;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,8 +20,18 @@ public class InterCeptorGenerator extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		ModelAndView mav = new ModelAndView();
+
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+
+		if (UserOrAdmin(name, email) == 1) {
+			// response.sendRedirect("/Admin/Admin.do");
+			mav.setViewName("/Admin/Admin.do");
+		}
 		return true;
 	}
+
 	public int UserOrAdmin(String name, String email) {
 		int flag = 0;
 		if (name.equals("CsJ") && email.equals("CsJ@admin.com")) {
@@ -32,17 +44,24 @@ public class InterCeptorGenerator extends HandlerInterceptorAdapter {
 		} else {
 			flag = 0;
 		}
-
 		return flag;
 	}
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
+		// String name = request.getParameter("name");
+		// String email = request.getParameter("email");
+
+		Map<String, Object> loginData = modelAndView.getModel();
+		String name = loginData.get("name").toString();
+		String email = loginData.get("email").toString();
+		System.out.println(name);
+		System.out.println(email);
+
 		if (UserOrAdmin(name, email) == 1) {
-			response.sendRedirect("/Admin/Admin.do");
+			// response.sendRedirect("/Admin/Admin.do");
+			modelAndView.setViewName("/Admin/Admin.do");
 		}
 	}
 

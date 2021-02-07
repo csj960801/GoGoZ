@@ -82,58 +82,48 @@ public class AppController {
 	/**
 	 * 회원가입
 	 */
-	@RequestMapping("/MemberReg/MemberReg.do")
+	@RequestMapping(value = "/MemberReg/MemberReg.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> MemberReg(MemberVO memberRegvo, @RequestBody String user) {
+	public String MemberReg(MemberVO memberRegvo, @RequestBody Map<String, Object> user) {
 
 		Map<String, Object> regMap = new HashMap<String, Object>();
 		if (!MemberDuplicateCheck(memberRegvo)) {
-			regMap.put("MemberReg", memberService.MemberRegister(memberRegvo));
-			regMap.put("Data", user);
+			// regMap.put("MemberReg", memberService.MemberRegister(memberRegvo));
+			regMap.put("MemberReg", memberService.MemberRegister(user));
+
 		} else {
 			regMap.put("duplicated", true);
 		}
-		return regMap;
+		return "redirect:/MemberLogin/login";
+	}
+
+	/**
+	 * 회원중복 여부(vo test)
+	 */
+	public boolean MemberDuplicateCheck(MemberVO vo) {
+		boolean duplicateMember = memberService.MemberDuplicateCheck(vo);
+		return duplicateMember;
 	}
 
 	/**
 	 * 로그인
 	 */
-	@RequestMapping("/MemberLog/MemberLog.do")
+	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> MemberLog(MemberVO loginvo, HttpServletRequest req, HttpServletResponse res,
-			@RequestBody String user) {
+	public String MemberLog(MemberVO loginvo, HttpServletRequest req, HttpServletResponse res,
+			@RequestBody Map<String, Object> user) {
 
 		Map<String, Object> logMap = new HashMap<String, Object>();
-		boolean login = memberService.MemberLog(loginvo);
-
+		// boolean login = memberService.MemberLog(loginvo);
+		boolean login = memberService.MemberLog(user);
 		logMap.put("login", login);
-		logMap.put("Data", user);
 
-		// 로그인이 정상적으로 진행되었을 때
+		// 로그인이 정상적으로 진행되었을 때 session생성
 		if (login) {
-
 			HttpSession session = req.getSession();
-
-			// 이름 저장 체크박스 체크 여부 확인
-			String rememberName = req.getParameter("remember");
-			if (rememberName.equals("true")) {
-				Cookie rememberCookie = new Cookie("rememberName", loginvo.getName());
-				rememberCookie.setMaxAge(24 * 60 * 60);
-				res.addCookie(rememberCookie);
-			}
-
-			session.setAttribute("loginName", loginvo.getName());
+			session.setAttribute("loginName", user.get("name").toString());
 		}
-		return logMap;
-	}
-
-	/**
-	 * 회원중복 여부
-	 */
-	public boolean MemberDuplicateCheck(MemberVO vo) {
-		boolean duplicateMember = memberService.MemberDuplicateCheck(vo);
-		return duplicateMember;
+		return "/index";
 	}
 
 	/**
