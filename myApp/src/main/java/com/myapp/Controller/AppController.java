@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
 import com.myapp.ServiceImpl.AdminServiceImpl;
 import com.myapp.ServiceImpl.BoardServiceImpl;
@@ -82,8 +83,8 @@ public class AppController {
 	/**
 	 * 회원가입
 	 */
-	@RequestMapping(value = "/MemberReg/MemberReg.do", method = RequestMethod.POST)
 	@ResponseBody
+	@RequestMapping(value = "/MemberReg/MemberReg.do", method = RequestMethod.POST)
 	public String MemberReg(MemberVO memberRegvo, @RequestBody Map<String, Object> user) {
 
 		Map<String, Object> regMap = new HashMap<String, Object>();
@@ -108,11 +109,11 @@ public class AppController {
 	/**
 	 * 로그인
 	 */
-	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String MemberLog(MemberVO loginvo, HttpServletRequest req, HttpServletResponse res,
+	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8" })
+	public Map<String, Object> MemberLog(MemberVO loginvo, HttpServletRequest req, HttpServletResponse res,
 			@RequestBody Map<String, Object> user) {
-
+	
 		Map<String, Object> logMap = new HashMap<String, Object>();
 		// boolean login = memberService.MemberLog(loginvo);
 		boolean login = memberService.MemberLog(user);
@@ -123,7 +124,7 @@ public class AppController {
 			HttpSession session = req.getSession();
 			session.setAttribute("loginName", user.get("name").toString());
 		}
-		return "/index";
+		return logMap;
 	}
 
 	/**

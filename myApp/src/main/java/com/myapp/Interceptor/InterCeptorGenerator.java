@@ -20,15 +20,6 @@ public class InterCeptorGenerator extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		ModelAndView mav = new ModelAndView();
-
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-
-		if (UserOrAdmin(name, email) == 1) {
-			// response.sendRedirect("/Admin/Admin.do");
-			mav.setViewName("/Admin/Admin.do");
-		}
 		return true;
 	}
 
@@ -53,16 +44,16 @@ public class InterCeptorGenerator extends HandlerInterceptorAdapter {
 		// String name = request.getParameter("name");
 		// String email = request.getParameter("email");
 
-		Map<String, Object> loginData = modelAndView.getModel();
-		String name = loginData.get("name").toString();
-		String email = loginData.get("email").toString();
-		System.out.println(name);
-		System.out.println(email);
-
-		if (UserOrAdmin(name, email) == 1) {
-			// response.sendRedirect("/Admin/Admin.do");
-			modelAndView.setViewName("/Admin/Admin.do");
-		}
+		/*
+		 * Map<String, Object> loginData = modelAndView.getModel(); String name =
+		 * loginData.get("name").toString(); String email =
+		 * loginData.get("email").toString(); System.out.println(name);
+		 * System.out.println(email);
+		 * 
+		 * if (UserOrAdmin(name, email) == 1) { //
+		 * response.sendRedirect("/Admin/Admin.do");
+		 * modelAndView.setViewName("/Admin/Admin.do"); }
+		 */
 	}
 
 	@Override
