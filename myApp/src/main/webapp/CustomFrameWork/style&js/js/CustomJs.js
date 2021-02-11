@@ -84,9 +84,11 @@ function MemberFunction() {
 		    url:"/MemberReg/MemberReg.do",
 		    data: JSON.stringify(userdata),
 		    contentType:"application/json",
+		    dataType:"json",
 		    type:"post",
 		    success:function(result){
-		    	console.log(result);
+		    	alert("회원가입 성공~");
+        		window.location.href="/MemberLogin/login.do";
 		    },
 		    error:function(){
 		     	alert("회원가입 실패했습니다.");				    
@@ -131,10 +133,12 @@ function MemberFunction() {
         $.ajax({
         	url:"/MemberLog/MemberLog.do",
         	data:JSON.stringify(logindata),
-        	type:"post",
+        	dataType:"json",
         	contentType:"application/json",
-        	success:function(result){
-        		console.log(result);
+          	type:"post",
+            success:function(result){
+        		alert("로그인 성공~");
+        		window.location.href="/index.do";
         	},
         	error:function(){
         		alert("로그인 실패");

@@ -89,7 +89,8 @@
 			<version>3.0.8</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind(자바에서는 JSON타입의 데이터가없어서 라이브러리를 가져와서 사용해야함) -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind(자바에서는 
+			JSON타입의 데이터가없어서 라이브러리를 가져와서 사용해야함) -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -103,21 +104,13 @@
 			<version>1.9.13</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs 
-			<dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-taglibs</artifactId> 
-			<version>3.1.1.RELEASE</version> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>3.1.1.RELEASE</version>
+		</dependency> -->
 
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web 
-			<dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-web</artifactId> 
-			<version>3.1.1.RELEASE</version> </dependency> -->
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config 
-			<dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-config</artifactId> 
-			<version>3.1.1.RELEASE</version> </dependency> -->
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core 
-			<dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-core</artifactId> 
-			<version>3.1.1.RELEASE</version> </dependency> -->
 
 		<!-- Spring -->
 		<dependency>

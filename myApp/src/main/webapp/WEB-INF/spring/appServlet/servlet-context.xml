@@ -52,24 +52,17 @@
 	</interceptors>
 
 	<!-- dao -->
-	<beans:bean id="memberDAO"
-		class="com.myapp.Daoimpl.MemberDaoImpl" />
-	<beans:bean id="boardDAO"
-		class="com.myapp.Daoimpl.BoardDAOImpl" />
-	<beans:bean id="adminDAO"
-		class="com.myapp.Daoimpl.AdminDAOImpl" />
+	<beans:bean id="memberDAO" class="com.myapp.Daoimpl.MemberDaoImpl" />
+	<beans:bean id="boardDAO" class="com.myapp.Daoimpl.BoardDAOImpl" />
+	<beans:bean id="adminDAO" class="com.myapp.Daoimpl.AdminDAOImpl" />
 
 	<!-- Service -->
-	<beans:bean id="memberService"
-		class="com.myapp.ServiceImpl.MemberServiceImpl" />
-	<beans:bean id="boardService"
-		class="com.myapp.ServiceImpl.BoardServiceImpl" />
-	<beans:bean id="adminService"
-		class="com.myapp.ServiceImpl.AdminServiceImpl" />
+	<beans:bean id="memberService" class="com.myapp.ServiceImpl.MemberServiceImpl" />
+	<beans:bean id="boardService" class="com.myapp.ServiceImpl.BoardServiceImpl" />
+	<beans:bean id="adminService" class="com.myapp.ServiceImpl.AdminServiceImpl" />
 
 	<!-- 컨트롤러 경로 스캔 -->
-	<context:component-scan
-		base-package="com.myapp.Controller" />
+	<context:component-scan base-package="com.myapp.Controller" />
 
 
 </beans:beans>

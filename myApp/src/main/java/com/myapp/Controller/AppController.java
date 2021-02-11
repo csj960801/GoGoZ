@@ -109,11 +109,11 @@ public class AppController {
 	/**
 	 * 로그인
 	 */
-	@ResponseBody
-	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8" })
-	public Map<String, Object> MemberLog(MemberVO loginvo, HttpServletRequest req, HttpServletResponse res,
-			@RequestBody Map<String, Object> user) {
-	
+	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST, produces = {
+			"application/json;charset=UTF-8" })
+	public @ResponseBody Map<String, Object> MemberLog(MemberVO loginvo, HttpServletRequest req,
+			HttpServletResponse res, @RequestBody Map<String, Object> user) {
+
 		Map<String, Object> logMap = new HashMap<String, Object>();
 		// boolean login = memberService.MemberLog(loginvo);
 		boolean login = memberService.MemberLog(user);
