@@ -52,8 +52,8 @@
 							</c:if>
 							<c:choose>
 								<c:when test="${musicList.size() > 0}">
-									<c:forEach items="${musicList}" varStatus="status" var="music">
-										<c:forEach items="${music}" var="musiclist">
+									<c:forEach items="${musicList}" var="music">
+										<c:forEach items="${music}" varStatus="status" var="musiclist">
 										<tr>
 											<td>${status.count}</td>						
 										    <td>${musiclist.uploader}</td>						

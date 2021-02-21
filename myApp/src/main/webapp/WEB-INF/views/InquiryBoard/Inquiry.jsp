@@ -15,5 +15,3 @@
 		</script>
 	</c:when>
 </c:choose>
-
-<div class="success_wrapper">${Data}</div>

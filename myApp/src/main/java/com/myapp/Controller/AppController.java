@@ -176,15 +176,21 @@ public class AppController {
 	/**
 	 * 질문 게시판
 	 */
-	@RequestMapping("/InquiryBoard/Inquiry.do")
+	@RequestMapping(value = "/InquiryBoard/Inquiry.do", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Map<String, Object> InquiryBoard(BoardVO bvo, @RequestBody String data) {
+	public Map<String, Object> InquiryBoard(BoardVO bvo, @RequestBody Map<String, Object> data) {
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 
-		int inquiryCnt = boardService.InquiryBoard(bvo);
+		// int inquiryCnt = boardService.InquiryBoard(bvo);
+		int inquiryCnt = boardService.InquiryBoard(data);
 		if (inquiryCnt > 0) {
+			log.info("===================================");
+			log.info(data.get("title").toString());
+			log.info(data.get("writer").toString());
+			log.info(data.get("date").toString());
+			log.info(data.get("content").toString());
+			log.info("===================================");
 			boardMap.put("inquiry", inquiryCnt);
-			boardMap.put("Data", data);
 		}
 		return boardMap;
 	}

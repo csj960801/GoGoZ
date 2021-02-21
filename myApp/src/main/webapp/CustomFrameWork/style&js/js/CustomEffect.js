@@ -37,14 +37,14 @@ function keyboardEffect() {
 			});
 		}
 		// IE(윈도우 익스플로러)
-		window.onkeydown = function(event) {
+		/*window.onkeydown = function(event) {
 			var caplock = event.getModifierState("CapsLock");
 			if (caplock) {
 				alert("CapsLock Switch On");
 			} else {
 				// alert("CapsLock Switch Off");
 			}
-		}
+		}*/
 	}// end of for()
 	// console.log(browserInfo);
 

@@ -83,8 +83,8 @@ function MemberFunction() {
 		$.ajax({
 		    url:"/MemberReg/MemberReg.do",
 		    data: JSON.stringify(userdata),
-		    contentType:"application/json",
 		    dataType:"json",
+			contentType:"application/json",
 		    type:"post",
 		    success:function(result){
 		    	alert("회원가입 성공~");
@@ -138,7 +138,7 @@ function MemberFunction() {
           	type:"post",
             success:function(result){
         		alert("로그인 성공~");
-        		window.location.href="/index.do";
+        		window.location.href="/index.do?result="+encodeURI(result);
         	},
         	error:function(){
         		alert("로그인 실패");
@@ -217,10 +217,10 @@ function BoardFunction(){
 	});
 	$("#InquirySubmitBtn").click(function() {
 		var title = document.getElementById("b-title").value;
-		var name = document.getElementById("b-name").value;
-		var Boarddate = document.getElementById("b-date").value;
+		var writer = document.getElementById("b-name").value;
+		var date = document.getElementById("b-date").value;
 		var content = document.getElementById("b-content").value;
-		var BoardArray = [title, name, Boarddate, content];
+		var BoardArray = [title, writer, date, content];
 		
 		for(var dataInt in BoardArray){
 			if(BoardArray[dataInt] == null || BoardArray[dataInt].length <= 0){
@@ -228,13 +228,25 @@ function BoardFunction(){
 				return false;
 			}
 		}
-	
-		//document.getElementById("InquiryBoardFrm").setAttribute("action","/InquiryBoard/Inquiry.do");
-		//document.getElementById("InquiryBoardFrm").setAttribute("method","post");
-	
-		document.InquiryBoardFrm.action = "/InquiryBoard/Inquiry.do";
-		document.InquiryBoardFrm.method = "post";
-	    document.InquiryBoardFrm.submit();
+		var boardJson = {"title":title, "writer":writer, "date":date, "content":content};
+		$.ajax({
+			url:"/InquiryBoard/Inquiry.do",
+			type:"post",
+			dataType:"json",
+			data:JSON.stringify(boardJson),
+			contentType:"application/json",
+			success:function(result){
+				alert("문의해주셔서감사합니다! 빠른 시일내에 답변하겠습니다 ");
+				window.location.href = "/";
+			},
+			error:function(){
+				alert("문의실패");
+			    return false;
+			}
+		});
+		//document.InquiryBoardFrm.action = "/InquiryBoard/Inquiry.do";
+		//document.InquiryBoardFrm.method = "post";
+	    //document.InquiryBoardFrm.submit();
 	});
 	
 	// 게시글 수정을 위해 유저가 작성했던 게시글 목록으로 
@@ -245,12 +257,10 @@ function BoardFunction(){
 	    document.InquiryBoardFrm.submit();
 	});
 	// 게시글 수정 페이지로
-	$("#inquirylist_update").click(function(){
+	/*$("#inquirylist_update").click(function(){
 		var inquirylist_update_data = document.querySelector(".inquirylist_update_data").value;
-		document.InquiryBoardFrm.action = "/InquiryBoard/InquiryRevision.do?updateData="+encodeURI(inquirylist_update_data);
-		document.InquiryBoardFrm.method = "post";
-	    document.InquiryBoardFrm.submit();		
-	});
+		inquiryRevisionResolver(inquirylist_update_data);
+	});*/
 	// 게시글 수정완료 
 	$("#InquiryUpdateBtn").click(function(){
 		var inquiry_update_data = document.querySelector(".updateNum").value;
@@ -260,8 +270,23 @@ function BoardFunction(){
 	});
 };
 
+
+/**
+ * 게시글 수정을 요청한 데이터 파악하는 함수 
+ * @param revisionData
+ * @returns
+ */
+function inquiryRevisionResolver(revisionData){
+	document.InquiryBoardFrm.action = "/InquiryBoard/InquiryRevision.do?updateData="+encodeURI(revisionData);
+	document.InquiryBoardFrm.method = "post";
+    document.InquiryBoardFrm.submit();		
+}
+
 /**
  * 관리자 전용
+ * @param data
+ * @param type
+ * @returns
  */
 function Admin(data, type){
     if(type == "board"){

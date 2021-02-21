@@ -28,7 +28,7 @@
 									<tr>
 										<th>게시자명</th>
 										<td><input type="text" id="b-name" name="writer"
-											class="form-control" value="${writer}" /></td>
+											class="form-control" value="${writer}" readonly="readonly"/></td>
 									</tr>
 									<tr>
 										<th>게시날짜</th>

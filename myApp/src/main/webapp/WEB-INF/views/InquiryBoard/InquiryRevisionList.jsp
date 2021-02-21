@@ -15,7 +15,7 @@
 				<div class="manager_tbl_wrapper table-responsive">
 					<form id="InquiryBoardFrm" name="InquiryBoardFrm">
 						<h3 class="manager_title"><span class="title_span">${sessionScope.loginName}</span> 회원님이 작성하신 게시글 정보</h3>
-						<table class="table manager_table">
+						<table class="table manager_table table-hover">
 							<colgroup>
 								<col width="150px" />
 								<col width="200px" />
@@ -24,6 +24,7 @@
 							</colgroup>
 							<thead>
 								<tr>
+									<th>&nbsp;</th>
 									<th>제목</th>
 									<th>글쓴이</th>
 									<th>날짜</th>
@@ -32,13 +33,14 @@
 							</thead>
 							<tbody>
 								<c:if test="${memberBoardList != null}">
-									<c:forEach var="list" items="${memberBoardList}">
+									<c:forEach varStatus="status" var="list" items="${memberBoardList}">
 										<tr class="manager_tr">
+											<td class="manager_td">${status.count}</td>
 											<td class="manager_td">${list.title}</td>
 											<td class="manager_td">${list.writer}</td>
 											<td class="manager_td">${list.date}</td>
 											<td class="manager_td">
-												<a href="#" id="inquirylist_update">${list.content}</a>
+												<a href="javascript:inquiryRevisionResolver('${list.content}');" class="inquirylist_update">${list.content}</a>
 											    <input type="hidden" class="inquirylist_update_data" value="${list.content}"/>
 											</td>
 										</tr>
