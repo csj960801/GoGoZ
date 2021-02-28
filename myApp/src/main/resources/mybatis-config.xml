@@ -9,7 +9,7 @@
 		<typeAlias type="com.myapp.VO.MemberVO" alias="membervo" />
 		<typeAlias type="com.myapp.VO.UpdateVO" alias="updatevo" />
 		<typeAlias type="com.myapp.VO.MusicVO" alias="musicvo" />
-		<typeAlias type="com.myapp.VO.PortVO" alias="portvo" />		
+		<typeAlias type="com.myapp.VO.ChanelVO" alias="chanelvo" />		
 	</typeAliases>
 
 	<environments default="development">
@@ -17,6 +17,9 @@
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
 				<property name="driver" value="com.mysql.cj.jdbc.Driver" />
+				<property name="url" value="" />
+				<property name="username" value="" />
+				<property name="password" value="" />
 			</dataSource>
 		</environment>
 	</environments>

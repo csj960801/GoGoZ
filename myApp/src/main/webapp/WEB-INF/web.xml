@@ -76,10 +76,10 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/spring/appServlet/Function-context.xml
+				/WEB-INF/spring/appServlet/function-context.xml
 			</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup>
+		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>gogozFunction</servlet-name>
@@ -97,7 +97,7 @@
 				/WEB-INF/spring/appServlet/Music-Context.xml
 			</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup>
+		<load-on-startup>3</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>gogozMusic</servlet-name>

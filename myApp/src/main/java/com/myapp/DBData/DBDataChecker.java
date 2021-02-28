@@ -26,9 +26,9 @@ public class DBDataChecker {
 	 * @return
 	 */
 	public static Connection DBConnectorInstance() {
-		String url = "jdbc:mysql://localhost:3306/prototype?serverTimezone=UTC";
-		String user = "root";
-		String password = "sevenn0801";
+		String url = "";
+		String user = "";
+		String password = "";
 		if (connector != null) {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");

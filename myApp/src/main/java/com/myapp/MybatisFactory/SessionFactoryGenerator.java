@@ -5,10 +5,13 @@ import java.io.InputStream;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SessionFactoryGenerator {
 
 	private static SqlSessionFactory sessionfactory;
+	private static Logger sessionlog = LoggerFactory.getLogger(SessionFactoryGenerator.class);
 
 	public static SqlSessionFactory sessionFactoryInstance() {
 		String mybatisConfig = "mybatis-config.xml";
@@ -18,7 +21,7 @@ public class SessionFactoryGenerator {
 				ConfigStream = Resources.getResourceAsStream(mybatisConfig);
 				sessionfactory = new SqlSessionFactoryBuilder().build(ConfigStream);
 			} catch (Exception e) {
-				System.out.println("SessionFactoryError: " + e.toString());
+				sessionlog.warn("SessionFactoryLoadingError: " + e.toString());
 			}
 		}
 		return sessionfactory;

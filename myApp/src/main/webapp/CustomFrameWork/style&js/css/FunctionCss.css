@@ -1,21 +1,21 @@
 @charset "UTF-8";
 
 @media ( min-width :770px) {
-	.portNum_wrapper {
-		margin: 30px 0;
-		height: 500px;
+	.ChenalCreate_wrapper {
+		width: 55%;
+		margin: auto;
 	}
-	.port_dl .port_dt {
+	.ChenalCreate_wrapper .chanel_label {
+		float: left;
+		padding: 4px 5px 0 0;
+	}
+	.ChenalCreate_wrapper .chanelCreateForm {
+		width: 90%;
+	}
+	.ChenalCreate_wrapper .chanel_p {
+		padding: 10px 0;
+		color: #e21818;
 		text-align: center;
-		color: #40f3e3;
-	}
-	.port_dl .port_dd {
-		padding: 15px 0;
-		text-align: center;
-	}
-	.port_dd .portNum {
-		width: 25%;
-		margin: 20px auto;
 	}
 	#functionBtn, #clientfunctionBtn, #uploadBtn, #DownloadBtn, .musicTitle
 		{

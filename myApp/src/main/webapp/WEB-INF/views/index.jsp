@@ -31,8 +31,7 @@
 											class="img-responsive img-thumbnail" id="downloader">
 									</c:when>
 									<c:when test="${sessionScope.adminSession == null && sessionScope.loginName == null}">
-								        <img src="/Picture/musicDown.jpg"
-									        class="img-responsive img-thumbnail" id="downloader-blocked">
+								        <img src="/Picture/musicDown.jpg" class="img-responsive img-thumbnail" id="downloader-blocked">
 									</c:when>
 								</c:choose>
 								<p class="main-content-p">MusicDownload</p>
@@ -41,8 +40,12 @@
 							<div class="clearfix visible-xs"></div>
 
 							<div class="col-md-6 col-xs-12 img_wrap">
-								<img src="/Picture/live.jpg"
-									class="img-responsive img-thumbnail" id="perform">
+								<c:if test="${sessionScope.loginName != null}">
+								    <img src="/Picture/live.jpg" class="img-responsive img-thumbnail" id="chanel">
+								</c:if>
+								<c:if test="${sessionScope.loginName == null}">
+								    <img src="/Picture/live.jpg" class="img-responsive img-thumbnail" id="chanel-block">
+								</c:if>		
 								<p class="main-content-p">Live</p>
 							</div>
 

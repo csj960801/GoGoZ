@@ -11,12 +11,11 @@ $(function() {
 	$("#downloader").click(function() {
 	    window.location.href="/Music/MusicList.music";
 	});
-	$("#downloader-blocked").click(function() {
+	$("#downloader-blocked, #chanel-block").click(function() {
         alert("회원만 사용가능한 서비스입니다. 로그인을 해주세요.");
 	    window.location.href="/MemberLogin/login.jsp";
 	});
    
-    clientSocket();
     MusicUploader();
 	
 	}

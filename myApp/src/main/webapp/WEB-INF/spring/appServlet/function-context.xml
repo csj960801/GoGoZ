@@ -19,32 +19,29 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- /WEB-INF/function 안에 있는 JSP파일 뒤에 .jsp를 자동으로 붙여주는 뷰리조버 -->
-	<beans:bean id="ViewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<beans:bean id="ViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/function/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-    <!-- UrlFileNameViewController(로직이 따로 필요없는 클라이언트에 이동 할 때 사용 될 것임.)  -->
+    <!-- UrlFileNameViewController(로직이 따로 필요없는 클라이언트에 이동 할 때 사용 될 것임.)
 	<beans:bean id="urlFilenameViewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
 	<beans:bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<beans:property name="mappings">
 			<beans:props>
-				<beans:prop key="/Function/function.bo">urlFilenameViewController</beans:prop>
+				<beans:prop key="/Function/Chanel/ChanelList.bo">urlFilenameViewController</beans:prop>
 			</beans:props>
 		</beans:property>
-	</beans:bean>
+	</beans:bean> -->
 
-	<!-- 소켓인터셉터 -->
-	<beans:bean id="socketInterceptor"
-		class="com.myapp.Interceptor.SocketPortInterCeptor"></beans:bean>
+	<!-- 소켓인터셉터
+	<beans:bean id="socketInterceptor" class="com.myapp.Interceptor.SocketPortInterCeptor"></beans:bean>
 	<interceptors>
 		<interceptor>
-			<mapping path="/Function/PortNum.bo" />
-			<mapping path="/Function/clientPort.bo" />
-			<beans:ref bean="socketInterceptor" />
+		   <mapping path="*.bo" />
+		   <beans:ref bean="socketInterceptor"/>
 		</interceptor>
-	</interceptors>
+	</interceptors> -->
 
 	<!-- MultipartResolver 설정 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -53,10 +50,9 @@
 			value="100000000" />
 	</beans:bean>
 
-	<!-- RTC 기능 DI -->
-	<beans:bean id="socket" class="com.function.Controller.SocketGenerator" />
-	<beans:bean id="clientsocket" class="com.function.Controller.ClientSocket" />
-
+	<beans:bean id="chanelDAO" class="com.myapp.Daoimpl.ChanelDAOImpl" />
+	<beans:bean id="chanelService" class="com.myapp.ServiceImpl.ChanelServiceImpl" />
+	
 	<!-- 컨트롤러 경로 스캔 -->
 	<context:component-scan base-package="com.function.Controller" />
 </beans:beans>
