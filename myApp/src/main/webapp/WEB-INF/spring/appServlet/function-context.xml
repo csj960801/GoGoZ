@@ -18,9 +18,9 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- /WEB-INF/function 안에 있는 JSP파일 뒤에 .jsp를 자동으로 붙여주는 뷰리조버 -->
+	<!-- /WEB-INF/function/Chanel/ 안에 있는 JSP파일 뒤에 .jsp를 자동으로 붙여주는 뷰리조버 -->
 	<beans:bean id="ViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/function/" />
+		<beans:property name="prefix" value="/WEB-INF/function/Chanel/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
@@ -43,14 +43,16 @@
 		</interceptor>
 	</interceptors> -->
 
-	<!-- MultipartResolver 설정 -->
+	<!-- MultipartResolver 설정
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="100000000" />
-		<beans:property name="maxInMemorySize"
-			value="100000000" />
-	</beans:bean>
+		<beans:property name="maxInMemorySize" value="100000000" />
+	</beans:bean> -->
 
+	<!-- dao  -->
 	<beans:bean id="chanelDAO" class="com.myapp.Daoimpl.ChanelDAOImpl" />
+	
+	<!-- service -->
 	<beans:bean id="chanelService" class="com.myapp.ServiceImpl.ChanelServiceImpl" />
 	
 	<!-- 컨트롤러 경로 스캔 -->

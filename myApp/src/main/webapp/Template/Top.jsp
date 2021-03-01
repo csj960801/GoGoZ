@@ -9,8 +9,8 @@
 </head>
 <body>
 <div class="nav navbar-inverse main-menu">
-	<div class="container-fluid">
-		<div class="row">
+	<div class="container-fluid menu_container">
+		<div class="row menu_row">
 			<div class="col-md-2 col-xs-6">
 				<div class="navbar-header">
 					<a href="/" class="navbar-brand">GoGoZ</a>

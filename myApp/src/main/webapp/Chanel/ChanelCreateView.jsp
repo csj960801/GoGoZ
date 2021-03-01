@@ -15,21 +15,32 @@
 	<div class="container chanel_container">
 		<div class="row chanel_container">
 			<div class="col-md-12- col-xs-12 form-group">
-				<form id="ChanelFrm" name="chanelFrm">
-					<div class="ChenalCreate_wrapper">
-						<label class="chanel_label" for="chanel_label">채널생성</label>
-						<input type="password" class="form-control chanelCreateForm" name="chanel" />
-						<p class="chanel_p">
-							<span class="chanel_span">* 생성하실 4자리의 채널번호를 입력해주세요.</span>
-						</p>
-					</div>
-				</form>
+				<div class="CreateChanel_wrapper">
+					<form id="ChanelFrm" name="chanelFrm">
+						<div class="ChenalCreate_wrapper">
+							<label class="chanel_label" for="chanel_label">채널생성</label>
+							<input type="password" class="form-control chanelCreateForm" name="chanel" />
+							<p class="chanel_p">
+								<span class="chanel_span">* 생성하실 4자리의 채널번호를 입력해주세요.</span>
+							</p>
+						</div>
+					</form>
+			    </div>	
 				
 				<div class="clearfix"></div>
 				
-				<form id="chanelListFrm" name="chanelListFrm">
-				   <div class="chanelList"></div>
-				</form>
+				<div class="ChanelListFrm_wrapper">
+				<h3 class="chanelList_h3">채널을 알고계시나요?</h3>
+					<form id="ChanelListFrm" name="ChanelListFrm">
+						<div class="ChenalCreate_wrapper">
+							<label class="chanel_label" for="chanel_label">채널검색</label>
+							<input type="password" class="form-control chanelFindForm" name="chanel" />
+							<p class="chanel_p">
+								<span class="chanel_span">* 검색하실 4자리의 채널번호를 입력해주세요.</span>
+							</p>
+						</div>
+					</form>
+			    </div>
 			</div>
 		</div>
 	</div>

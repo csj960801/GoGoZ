@@ -17,9 +17,7 @@
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
 				<property name="driver" value="com.mysql.cj.jdbc.Driver" />
-				<property name="url" value="" />
-				<property name="username" value="" />
-				<property name="password" value="" />
+				
 			</dataSource>
 		</environment>
 	</environments>
@@ -29,6 +27,6 @@
 		<mapper resource="mapper/sql/boardMapper.xml" />
 		<mapper resource="mapper/sql/AdminMapper.xml" />
 		<mapper resource="mapper/sql/MusicMapper.xml" />
-		<mapper resource="mapper/sql/SocketMapper.xml" />		
+		<mapper resource="mapper/sql/ChanelMapper.xml" />		
 	</mappers>
 </configuration>

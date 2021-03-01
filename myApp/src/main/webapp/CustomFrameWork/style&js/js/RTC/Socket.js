@@ -28,9 +28,25 @@ $(function() {
 		document.querySelector(".chanelCreateForm").focus();
 	});
 
-	/*
-	 * $.ajax({ url : "/function/Chanel/ChanelList.bo", type : "post",
-	 * dataType:"json", contentType:"application/json", success :
-	 * function(result) { $(".chanelList").html(result); }, error : function(e) {
-	 * alert("채널리스트를 가져오는데 실패하였습니다."); } });
-	 */});
+	// 채널채널 검색 및 리스트
+	$(".chanelFindForm").mouseout(function() {
+		var chanelNum = document.querySelector(".chanelFindForm").value;
+		var check = false;
+		if(chanelNum != ""){
+			check = confirm(chanelNum + "을 포함한 채널을 찾을까요?");			
+		}else{
+			check = confirm("채널 목록을 보여드릴까요?");
+		}
+		
+		if(check){
+			document.ChanelListFrm.method = "post";
+			document.ChanelListFrm.action = "/function/Chanel/ChanelList.bo";
+			document.ChanelListFrm.submit();		
+		}
+		return false;
+	});
+	$(".chanelFindForm").mouseover(function() {
+		document.querySelector(".chanelFindForm").focus();
+	});
+
+});

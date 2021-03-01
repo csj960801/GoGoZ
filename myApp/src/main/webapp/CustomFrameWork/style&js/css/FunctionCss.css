@@ -9,13 +9,48 @@
 		float: left;
 		padding: 4px 5px 0 0;
 	}
-	.ChenalCreate_wrapper .chanelCreateForm {
+	.CreateChanel_wrapper input.chanelCreateForm {
 		width: 90%;
 	}
 	.ChenalCreate_wrapper .chanel_p {
 		padding: 10px 0;
 		color: #e21818;
 		text-align: center;
+	}
+	.ChanelListFrm_wrapper {
+		height: 370px;
+		padding: 70px 0;
+	}
+	.ChanelListFrm_wrapper input.chanelFindForm {
+		width: 1%;
+		padding: 0;
+		-moz-transition: all 0.2s ease;
+		-o-transition: all 0.2s ease;
+		-ms-transition: all 0.2s ease;
+		-webkit-transition: all 0.2s ease;
+	}
+	.ChanelListFrm_wrapper input.chanelFindForm:hover {
+		width: 90%;
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+	}
+	.ChanelListFrm_wrapper h3.chanelList_h3 {
+		text-align: center;
+		font-size: 15px;
+		font-weight: 600;
+		width: 58%;
+		margin: 10px 0;
+		position: relative;
+	}
+	.ChanelListFrm_wrapper h3.chanelList_h3::before {
+		content: "";
+		position: absolute;
+		padding: 2px 5px;
+		background: #333;
+		top: 6px;
+		left: 240px;
 	}
 	#functionBtn, #clientfunctionBtn, #uploadBtn, #DownloadBtn, .musicTitle
 		{

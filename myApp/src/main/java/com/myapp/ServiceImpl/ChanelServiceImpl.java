@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.myapp.Daoimpl.ChanelDAOImpl;
 import com.myapp.Service.ChanelService;
 import com.myapp.VO.ChanelVO;
 
+@Service("com.myapp.Service.ChanelService")
 public class ChanelServiceImpl implements ChanelService {
 
 	@Autowired
@@ -27,9 +29,9 @@ public class ChanelServiceImpl implements ChanelService {
 	 * 채널리스트
 	 */
 	@Override
-	public List<ChanelVO> getChanelList() {
+	public List<ChanelVO> getChanelList(ChanelVO cvo) {
 		// TODO Auto-generated method stub
-		return chanelDAO.getChanelList();
+		return chanelDAO.getChanelList(cvo);
 	}
 
 }

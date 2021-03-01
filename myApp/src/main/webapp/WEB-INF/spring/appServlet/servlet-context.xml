@@ -19,11 +19,11 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Json을 요청받은 로직의 view 설정  -->
+	<!-- Json을 요청받은 로직의 view 설정
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0"></beans:bean>
 	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
 	 	<beans:property name="contentType" value="application/json;charset=UTF-8"></beans:property>
-	</beans:bean>
+	</beans:bean>-->
  	<!-- <beans:bean class="org.springframework.web.http.converter.json.MappingJacksonHttpMessageConverter" id="jacksonMessageConverter" /> 
  	<beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
  		<beans:property name="messageConverters">
@@ -33,10 +33,10 @@
  		</beans:property>
  	</beans:bean> -->
  	
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory 
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" id="viewResolver">
 	    <beans:property name="order" value="2"></beans:property>
-	</beans:bean>
+	</beans:bean>-->
 	<beans:bean id="ViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />

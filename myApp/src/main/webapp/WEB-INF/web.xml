@@ -68,7 +68,7 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
-	<!--Rtc전용(Socket) -->
+	<!--채널전용-->
 	<servlet>
 		<servlet-name>gogozFunction</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet
@@ -79,7 +79,7 @@
 				/WEB-INF/spring/appServlet/function-context.xml
 			</param-value>
 		</init-param>
-		<load-on-startup>2</load-on-startup>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>gogozFunction</servlet-name>
@@ -97,7 +97,7 @@
 				/WEB-INF/spring/appServlet/Music-Context.xml
 			</param-value>
 		</init-param>
-		<load-on-startup>3</load-on-startup>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>gogozMusic</servlet-name>

@@ -6,11 +6,13 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import com.myapp.DAO.ChanelDAO;
 import com.myapp.MybatisFactory.SessionFactoryGenerator;
 import com.myapp.VO.ChanelVO;
 
+@Repository("com.myapp.DAO.ChanelDAO")
 public class ChanelDAOImpl implements ChanelDAO {
 
 	private SqlSession session = SessionFactoryGenerator.sessionFactoryInstance().openSession();
@@ -36,8 +38,8 @@ public class ChanelDAOImpl implements ChanelDAO {
 	 * @return
 	 */
 	@Override
-	public List<ChanelVO> getChanelList() {
-		List<ChanelVO> portlist = session.selectList("chanelList");
+	public List<ChanelVO> getChanelList(ChanelVO cvo) {
+		List<ChanelVO> portlist = session.selectList("chanelList", cvo);
 		return portlist;
 	}
 
