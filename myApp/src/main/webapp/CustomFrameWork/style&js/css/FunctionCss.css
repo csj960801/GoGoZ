@@ -52,6 +52,21 @@
 		top: 6px;
 		left: 240px;
 	}
+	.Chanel_container .Chanel_dd {
+		padding: 0 0 5px;
+	}
+	.Chanel_container .Chanel_dd>a {
+		color: #333;
+		font-size: 15px;
+	}
+	.Chanel_container .Chanel_dl {
+		height: 700px;
+	}
+	.Chanel_container .Chanel_dt {
+		text-align: center;
+		font-size: 25px;
+		padding: 15px 0;
+	}
 	#functionBtn, #clientfunctionBtn, #uploadBtn, #DownloadBtn, .musicTitle
 		{
 		background: #40f3e2;

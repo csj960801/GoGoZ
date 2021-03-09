@@ -4,6 +4,8 @@
 $(function() {
 	// 게시글 초기화
 	boardContentReset();
+
+	urlCheck();
 });
 
 // 게시글입력창을 2번 클릭시 value값 초기화
@@ -14,6 +16,32 @@ function boardContentReset() {
 	});
 
 }// end of boardContentReset()
+
+/**
+ * url 확인
+ * 
+ * @returns
+ */
+function urlCheck() {
+	// var protocol = window.location.protocol; //프로토콜(http:)
+	// var host = window.location.host; // 호스트 이름
+	var path = window.location.pathname; // /폴더명/페이지파일명
+
+	var pathArr = window.location.pathname.split("/");
+	for (var i = 0; i < pathArr.length; i++) {
+		console.log(pathArr[i]);
+		if (pathArr[i].indexOf("MemberDelete") > -1) {
+			document.querySelector("#MemberDelete .use_info").innerHTML = "(사용중)";
+		}
+		if (pathArr[i].indexOf("MemberUpdate") > -1) {
+			document.querySelector("#MemberUpdate .use_info").innerHTML = "(사용중)";
+		}
+		if (pathArr[i].indexOf("Board") > -1) {
+			document.querySelector("#InquiryBoard .use_info").innerHTML = "(사용중)";
+		}
+		document.querySelector("#" + pathArr[1] + ">.use_info").style.fontSize = "13px";
+	}
+};
 
 /**
  * 키보드 CapsLock을 눌렀을 경우, alert발생
@@ -37,14 +65,11 @@ function keyboardEffect() {
 			});
 		}
 		// IE(윈도우 익스플로러)
-		/*window.onkeydown = function(event) {
-			var caplock = event.getModifierState("CapsLock");
-			if (caplock) {
-				alert("CapsLock Switch On");
-			} else {
-				// alert("CapsLock Switch Off");
-			}
-		}*/
+		/*
+		 * window.onkeydown = function(event) { var caplock =
+		 * event.getModifierState("CapsLock"); if (caplock) { alert("CapsLock
+		 * Switch On"); } else { // alert("CapsLock Switch Off"); } }
+		 */
 	}// end of for()
 	// console.log(browserInfo);
 

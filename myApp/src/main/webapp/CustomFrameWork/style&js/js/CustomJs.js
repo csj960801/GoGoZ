@@ -47,9 +47,7 @@ function browserCheck() {
 		if (browser.indexOf("chrome") > -1 || browser.indexOf("firefox") > -1) {
 			// alert("지원브라우저 확인 되었습니다" + browser);
 		}
-		if ((appType == "Netscape" && navigator.userAgent.search('Trident') != -1)
-				|| (browser.indexOf("msie") != -1)
-				|| (navigator.userAgent.search("edge") != -1)) {
+		if ((appType == "Netscape" && browser.search('trident') != -1) || (browser.indexOf("msie") != -1) || (browser.search("edge") != -1)) {
 			// search() ㅡ 검색된 문자열의 위치값을 내놓는다. (전체 문자열에서 몇번째에 있는지)
 			// Trident는 MS의 IE(익스플로러)에서 사용하고 있는 레이아웃 엔진의 이름
 			alert("익스플로러 브라우저는 지원되지않습니다. 크롬과 파이어폭스 브라우저에서 다시 접속해주세요!");

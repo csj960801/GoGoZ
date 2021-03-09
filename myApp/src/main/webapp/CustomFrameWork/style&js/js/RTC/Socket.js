@@ -15,7 +15,7 @@ $(function() {
 		var chanelNum = document.querySelector(".chanelCreateForm");
 		if (chanelNum.value.length == 4) {
 			document.chanelFrm.method = "post";
-			document.chanelFrm.action = "/function/Chanel/ChanelCreate.bo";
+			document.chanelFrm.action = "/function/Function/ChanelCreate.bo";
 			document.chanelFrm.submit();
 		} else {
 			alert("채널 번호 형식에 옳지않습니다.");
@@ -32,16 +32,17 @@ $(function() {
 	$(".chanelFindForm").mouseout(function() {
 		var chanelNum = document.querySelector(".chanelFindForm").value;
 		var check = false;
-		if(chanelNum != ""){
-			check = confirm(chanelNum + "을 포함한 채널을 찾을까요?");			
-		}else{
+		if (chanelNum != "") {
+			check = confirm(chanelNum + "을 포함한 채널을 찾을까요?");
+		} else {
 			check = confirm("채널 목록을 보여드릴까요?");
 		}
-		
-		if(check){
+
+		if (check) {
 			document.ChanelListFrm.method = "post";
-			document.ChanelListFrm.action = "/function/Chanel/ChanelList.bo";
-			document.ChanelListFrm.submit();		
+			document.ChanelListFrm.action = "/function/Function/ChanelList.bo";
+			//document.ChanelListFrm.action = "/function/Function/test.bo";
+			document.ChanelListFrm.submit();
 		}
 		return false;
 	});

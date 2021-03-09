@@ -20,7 +20,7 @@
 
 	<!-- /WEB-INF/function/Chanel/ 안에 있는 JSP파일 뒤에 .jsp를 자동으로 붙여주는 뷰리조버 -->
 	<beans:bean id="ViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/function/Chanel/" />
+		<beans:property name="prefix" value="/WEB-INF/function/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
@@ -33,15 +33,6 @@
 			</beans:props>
 		</beans:property>
 	</beans:bean> -->
-
-	<!-- 소켓인터셉터
-	<beans:bean id="socketInterceptor" class="com.myapp.Interceptor.SocketPortInterCeptor"></beans:bean>
-	<interceptors>
-		<interceptor>
-		   <mapping path="*.bo" />
-		   <beans:ref bean="socketInterceptor"/>
-		</interceptor>
-	</interceptors> -->
 
 	<!-- MultipartResolver 설정
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

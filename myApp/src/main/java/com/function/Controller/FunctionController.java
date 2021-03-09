@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.myapp.ServiceImpl.ChanelServiceImpl;
 import com.myapp.VO.ChanelVO;
 
@@ -20,7 +22,7 @@ import com.myapp.VO.ChanelVO;
  *
  */
 @Controller
-@RequestMapping(value = "/function/Chanel/")
+@RequestMapping(value = "/function")
 public class FunctionController {
 
 	@Autowired
@@ -34,7 +36,7 @@ public class FunctionController {
 	 * @param chanelMap
 	 * @return
 	 */
-	@RequestMapping(value = "ChanelCreate.bo", method = RequestMethod.POST)
+	@RequestMapping(value = "/Function/ChanelCreate.bo", method = RequestMethod.POST)
 	public Map<String, Object> chanelCreate(ChanelVO cvo) {
 		Map<String, Object> chanelcreateMap = new HashMap<String, Object>();
 
@@ -54,9 +56,11 @@ public class FunctionController {
 	 * @param pvo
 	 * @return
 	 */
-	@RequestMapping(value = "ChanelList.bo", method = RequestMethod.POST)
-	public List<ChanelVO> PortList(ChanelVO cvo) {
-		Map<String, Object> portListMap = new HashMap<String, Object>();
+	@RequestMapping(value = "/Function/ChanelList.bo", method = RequestMethod.POST)
+	public ModelAndView PortList(ChanelVO cvo) {
+		// Map<String, Object> portListMap = new HashMap<String, Object>();
+
+		ModelAndView chanelMAV = new ModelAndView();
 
 		// 저장되어있는 포트들을 클라이언트에서 출력.
 		List<ChanelVO> chanelList = chanelService.getChanelList(cvo);
@@ -65,8 +69,11 @@ public class FunctionController {
 			functionLog.info("채널리스트: " + list.getChanel());
 			functionLog.info("===================================");
 		}
-		portListMap.put("chanelList", chanelList);
-		return chanelList;
+
+		chanelMAV.setViewName("/Function/ChanelList");
+		chanelMAV.addObject("chanelList", chanelList);
+		// portListMap.put("chanelList", chanelList);
+		return chanelMAV;
 	}
 
 }

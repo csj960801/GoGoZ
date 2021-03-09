@@ -36,10 +36,10 @@
 						<c:choose>
 							<c:when test="${sessionScope.loginName != null}">
 								<li><a href="#" id="MemberLogOut">로그아웃</a></li>
-								<li><a href="#" id="MemberDelete">회원탈퇴</a></li>
-								<li><a href="#" id="MemberUpdate">개인정보수정</a></li>
+								<li><a href="#" id="MemberDelete">회원탈퇴<span class="use_info"></span></a></li>
+								<li><a href="#" id="MemberUpdate">개인정보수정<span class="use_info"></span></a></li>
 								<!-- <li><a href="#" id="ClientPort">포트접속</a></li> -->
-								<li><a href="#" id="InquiryBoard">게시판</a></li>
+								<li><a href="#" id="InquiryBoard">게시판<span class="use_info"></span></a></li>
 								
 							</c:when>
 							<c:when test="${sessionScope.adminSession != null}">
