@@ -83,8 +83,8 @@ public class AppController {
 	/**
 	 * 회원가입
 	 */
-	@ResponseBody
 	@RequestMapping(value = "/MemberReg/MemberReg.do", method = RequestMethod.POST)
+	@ResponseBody
 	public String MemberReg(MemberVO memberRegvo, @RequestBody Map<String, Object> user) {
 
 		Map<String, Object> regMap = new HashMap<String, Object>();
@@ -109,9 +109,9 @@ public class AppController {
 	/**
 	 * 로그인
 	 */
-	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST, produces = {
-			"application/json;charset=UTF-8" })
-	public @ResponseBody Map<String, Object> MemberLog(MemberVO loginvo, HttpServletRequest req,
+	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8" })
+	@ResponseBody 
+	public Map<String, Object> MemberLog(MemberVO loginvo, HttpServletRequest req,
 			HttpServletResponse res, @RequestBody Map<String, Object> user) {
 
 		Map<String, Object> logMap = new HashMap<String, Object>();
@@ -123,6 +123,7 @@ public class AppController {
 		if (login) {
 			HttpSession session = req.getSession();
 			session.setAttribute("loginName", user.get("name").toString());
+			session.setAttribute("loginEmail", user.get("email").toString());
 		}
 		return logMap;
 	}

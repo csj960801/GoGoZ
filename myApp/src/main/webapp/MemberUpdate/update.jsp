@@ -6,7 +6,7 @@
 
 <body>
 	<div class="update_wrapper">
-		<div class="container">
+		<div class="container update_container">
 			<div class="row update_row">
 				<div class="col-md-12 col-xs-12 table-responsive form-group">
 					<form id="updateFrm" name="updateFrm">
@@ -16,7 +16,7 @@
 								<tr>
 									<th>기존이메일</th>
 									<td><input type="text" class="form-control originEmail"
-										name="originEmail" id="originEmail"></td>
+										name="originEmail" id="originEmail" value="${sessionScope.loginEmail}" readonly="readonly"></td>
 								</tr>
 								<tr>
 									<th>수정이메일</th>

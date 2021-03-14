@@ -180,8 +180,8 @@ function MemberFunction() {
 		var originEmail = document.getElementById("originEmail").value;
 		var modifyEmail = document.getElementById("modifyEmail").value;
 		if(originEmail.length <= 0 || modifyEmail.length <= 0){
-		
 			alert("입력되지 않은 폼이 있습니다.");
+			document.getElementById("originEmail").focus();
 			return false;
 		
 		}else if(originEmail == modifyEmail){
