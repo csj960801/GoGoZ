@@ -7,6 +7,10 @@
 
 /* mobile */
 @media ( max-width :769px) {
+	* {
+		font-size: 10px;
+	}
+
 	/* top */
 	.main-menu {
 		padding: 10px 0;
@@ -152,17 +156,53 @@
 		margin: 15px 0;
 		border-radius: 20px;
 		padding: 10px 0;
-		height: 505px;
+		height: 360px;
 	}
-	#registerBtn, #loginBtn, #delBtn, #updateBtn, #InquirySubmitBtn {
+	.Member-fieldset .userName-wrapper label[for='name'] {
+		float: left;
+		padding: 8px 0;
+	}
+	.Member-fieldset .userName-wrapper label[for='email'] {
+		float: left;
+		padding: 18px 0;
+	}
+	#registerBtn {
 		background: #40f3e3;
 		border-color: #40f3e3;
+		/* display: block; */
+		margin: 15px 0;
+		/* text-align: right; */
+		float: right;
+		font-size: 10px;
+	}
+	#loginBtn, #updateBtn {
+		background: #40f3e3;
+		border-color: #40f3e3;
+		display: block;
+		margin: 15px 0;
+		font-size: 10px;
+	}
+	dd.del_dd .delBtn {
+		background: #40f3e3;
+		border-color: #40f3e3;
+		/* display: block; */
+		margin: 3px 5px;
+		font-size: 10px;
+	}
+	.board-table .InquirySubmitBtn {
+		background: #40f3e3;
+		border-color: #40f3e3;
+		margin: 15px 0;
+		font-size: 10px;
+	}
+	.board-table .InquiryReviseBtn, .board-table .InquiryUpdateBtn {
+		padding: 5px 5px;
 		font-size: 10px;
 	}
 	.memberRegister-Wrapper .Member-fieldset #name, .memberRegister-Wrapper .Member-fieldset #email
 		{
-		width: calc(100%/ 2);
-		margin: 20px auto;
+		width: 85%;
+		margin: 10px auto;
 	}
 	form#loginFrm {
 		margin: 10px 0;
@@ -183,6 +223,7 @@
 	}
 	.Function_Section .account_Exist {
 		margin: 20px 0;
+		display: inline-block;
 	}
 	.Function_Section .account_Exist .account-a {
 		color: #000 !important;
@@ -191,22 +232,31 @@
 	}
 	.DelWrapper {
 		width: 85%;
-		margin: 0 auto;
-		height: 415px;
+		margin: 50px auto;
+		height: 380px;
 	}
 	.del_dl .del_dt span.del_h3 {
 		display: block;
 		padding: 20px 0;
-		font-size: 15px;
+		font-size: 10px;
+		text-align: center;
+		color: #40f3e3;
+		position: relative;
+	}
+	.del_dl .del_dt span.del_h3::before {
+		content: "";
+		position: absolute;
+		background: #40f3e3;
+		padding: 1px 3px;
+		left: 98px;
+		top: 27px;
 	}
 	.To_DelMember_Wrapper .goodbye-p {
 		font-weight: 650;
-		word-spacing: 6px;
 		padding: 15px 0;
 		/* width: 400px; */
 		margin: 0 auto;
-		color: #000;
-		border-bottom: 1px solid #000;
+		color: #40f3e3;
 	}
 	.To_DelMember_Wrapper .goodbye-p::before {
 		content: "\f21e";
@@ -217,6 +267,9 @@
 	.del_dl .del_dd .del_email {
 		width: 80%;
 		float: left;
+		padding: 0;
+		height: 25px;
+		margin: 4px 0;
 	}
 	.update_wrapper {
 		height: 440px;
@@ -266,7 +319,7 @@
 		border-left: transparent;
 		border-right: transparent;
 		color: #40f3e2;
-		font-size: 12px;
+		font-size: 10px;
 	}
 	h3.boarder-list-title {
 		text-align: center;
@@ -310,7 +363,7 @@
 		border-bottom: 1px solid #333;
 		width: 176px;
 		padding: 10px 0;
-		font-size: 15px;
+		font-size: 10px;
 	}
 	.manager_table thead tr th {
 		text-align: center;
@@ -322,6 +375,9 @@
 		font-size: 10px;
 		padding: 25px 5px;
 		word-break: keep-all;
+	}
+	.manager_table tbody tr td a.inquirylist_update {
+		color: #333;
 	}
 	.manager_td #inquirylist_update {
 		color: #333;
@@ -356,6 +412,73 @@
 	.MusicDownload_activate_wrapper h3.download_title::after {
 		content: "다운로드 진행중..(3초 뒤 음악목록으로 이동합니다.)";
 		padding: 0 5px;
+	}
+	.ChenalCreate_wrapper {
+		
+	}
+	.ChenalCreate_wrapper .chanel_label {
+		float: left;
+		padding: 5px 10px;
+	}
+	.CreateChanel_wrapper input.chanelCreateForm {
+		width: 62%;
+		height: 25px;
+		margin: 15px 0 0;
+	}
+	.ChenalCreate_wrapper .chanel_p {
+		padding: 10px 0;
+		color: #e21818;
+		text-align: center;
+	}
+	.ChanelListFrm_wrapper {
+		height: 370px;
+		padding: 70px 0;
+	}
+	.ChanelListFrm_wrapper input.chanelFindForm {
+		width: 1%;
+		padding: 0;
+		-moz-transition: all 0.2s ease;
+		-o-transition: all 0.2s ease;
+		-ms-transition: all 0.2s ease;
+		-webkit-transition: all 0.2s ease;
+	}
+	.ChanelListFrm_wrapper input.chanelFindForm:hover {
+		width: 65%;
+		height: 25px;
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+	}
+	.ChanelListFrm_wrapper h3.chanelList_h3 {
+		text-align: center;
+		font-size: 13px;
+		font-weight: 600;
+		margin: 10px 0 15px;
+		position: relative;
+	}
+	.ChanelListFrm_wrapper h3.chanelList_h3::before {
+		content: "";
+		position: absolute;
+		padding: 1px 5px;
+		background: #333;
+		top: 7px;
+		left: 70px;
+	}
+	.Chanel_container .Chanel_dd {
+		padding: 0 0 5px;
+	}
+	.Chanel_container .Chanel_dd>a {
+		color: #333;
+		font-size: 15px;
+	}
+	.Chanel_container .Chanel_dl {
+		height: 700px;
+	}
+	.Chanel_container .Chanel_dt {
+		text-align: center;
+		font-size: 25px;
+		padding: 15px 0;
 	}
 	/* footer */
 	.footer {

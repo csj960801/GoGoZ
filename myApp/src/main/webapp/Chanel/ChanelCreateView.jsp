@@ -19,7 +19,7 @@
 					<form id="ChanelFrm" name="chanelFrm">
 						<div class="ChenalCreate_wrapper">
 							<label class="chanel_label" for="chanel_label">채널생성</label>
-							<input type="password" class="form-control chanelCreateForm" name="chanel" />
+							<input type="password" class="form-control chanelCreateForm" name="chanel" autocomplete="off"/>
 							<p class="chanel_p">
 								<span class="chanel_span">* 생성하실 4자리의 채널번호를 입력해주세요.</span>
 							</p>
@@ -34,7 +34,7 @@
 					<form id="ChanelListFrm" name="ChanelListFrm">
 						<div class="ChenalCreate_wrapper">
 							<label class="chanel_label" for="chanel_label">채널검색</label>
-							<input type="password" class="form-control chanelFindForm" name="chanel" />
+							<input type="password" class="form-control chanelFindForm" name="chanel" autocomplete="off"/>
 							<p class="chanel_p">
 								<span class="chanel_span">* 검색하실 4자리의 채널번호를 입력해주세요.</span>
 							</p>
