@@ -23,22 +23,22 @@
 									<tr>
 										<th>제목</th>
 										<td><input type="text" id="b-title" name="title"
-											class="form-control"/></td>
+											class="form-control title" autocomplete="off"/></td>
 									</tr>
 									<tr>
 										<th>게시자명</th>
 										<td><input type="text" id="b-name" name="writer"
-											class="form-control" value="${sessionScope.loginName}" readonly="readonly"/></td>
+											class="form-control writer" value="${sessionScope.loginName}" readonly="readonly"/></td>
 									</tr>
 									<tr>
 										<th>게시날짜</th>
 										<td><input type="date" id="b-date" name="date"
-											class="form-control"/></td>
+											class="form-control date"/></td>
 									</tr>
 									<tr>
 										<th>게시글</th>
 										<td><textarea cols="30" rows="20" name="content"
-												id="b-content" class="form-control"></textarea></td>
+												id="b-content" class="form-control content"></textarea></td>
 									</tr>
 									<tr>
 										<td colspan="2" align="right">

@@ -7,7 +7,7 @@ import com.myapp.VO.BoardVO;
 
 public interface BoardDAO {
 
-	int InquiryBoard(Map<String, Object> bvo);
+	int InquiryBoard(BoardVO bvo);
 	// int InquiryBoard(BoardVO bvo);
 
 	// 게시글 데이터를 작성했던 유저가 본인이 작성했던 게시글을 볼 수 있도록 함.

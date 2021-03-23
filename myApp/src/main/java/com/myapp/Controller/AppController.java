@@ -109,10 +109,11 @@ public class AppController {
 	/**
 	 * 로그인
 	 */
-	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8" })
-	@ResponseBody 
-	public Map<String, Object> MemberLog(MemberVO loginvo, HttpServletRequest req,
-			HttpServletResponse res, @RequestBody Map<String, Object> user) {
+	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST, produces = {
+			"application/json;charset=UTF-8" })
+	@ResponseBody
+	public Map<String, Object> MemberLog(MemberVO loginvo, HttpServletRequest req, HttpServletResponse res,
+			@RequestBody Map<String, Object> user) {
 
 		Map<String, Object> logMap = new HashMap<String, Object>();
 		// boolean login = memberService.MemberLog(loginvo);
@@ -177,22 +178,29 @@ public class AppController {
 	/**
 	 * 질문 게시판
 	 */
-	@RequestMapping(value = "/InquiryBoard/Inquiry.do", method = RequestMethod.POST, produces = "application/json")
-	@ResponseBody
-	public Map<String, Object> InquiryBoard(BoardVO bvo, @RequestBody Map<String, Object> data) {
+	@RequestMapping(value = "/InquiryBoard/Inquiry.do", method = RequestMethod.POST)
+	// @ResponseBody
+	public Map<String, Object> InquiryBoard(BoardVO bvo, HttpServletRequest req) {
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 
-		// int inquiryCnt = boardService.InquiryBoard(bvo);
-		int inquiryCnt = boardService.InquiryBoard(data);
-		if (inquiryCnt > 0) {
+		HttpSession session = req.getSession();
+
+		// 만약 BoardForm.jsp에서 readonly가 적용되어있는 이름 데이터를 개발자도구로 수정해서 업로드 할 경우를 대비
+		if (session.getAttribute("loginName").equals(bvo.getWriter())) {
+			int inquiryCnt = boardService.InquiryBoard(bvo);
+			if (inquiryCnt > 0) {
+				log.info("===================================");
+				log.info("게시글 업로드 되었습니다.");
+				log.info("===================================");
+				boardMap.put("inquiry", inquiryCnt);
+			}
+		} else {
+			boardMap.put("inquiryFail", -1);
 			log.info("===================================");
-			log.info(data.get("title").toString());
-			log.info(data.get("writer").toString());
-			log.info(data.get("date").toString());
-			log.info(data.get("content").toString());
+			log.info("게시자명이 일치하지않음.");
 			log.info("===================================");
-			boardMap.put("inquiry", inquiryCnt);
 		}
+
 		return boardMap;
 	}
 

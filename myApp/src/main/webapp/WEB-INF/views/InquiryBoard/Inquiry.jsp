@@ -8,9 +8,15 @@
 	</script>
 </c:if>
 <c:choose>
-	<c:when test="${inquiry <= 0}">
+	<c:when test="${inquiry == 0}">
 		<script type="text/javascript">
 			alert("문의실패");
+			history.back();
+		</script>
+	</c:when>
+	<c:when test="${inquiryFail == -1}">
+		<script type="text/javascript">
+			alert("게시자명이 일치하지않습니다.");
 			history.back();
 		</script>
 	</c:when>

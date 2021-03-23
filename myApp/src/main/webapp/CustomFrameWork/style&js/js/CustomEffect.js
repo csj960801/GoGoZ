@@ -26,7 +26,6 @@ function urlCheck() {
 	// var protocol = window.location.protocol; //프로토콜(http:)
 	// var host = window.location.host; // 호스트 이름
 	var path = window.location.pathname; // /폴더명/페이지파일명
-	var deviceWidth = screen.width;
 
 	var pathArr = window.location.pathname.split("/");
 	for (var i = 0; i < pathArr.length; i++) {
@@ -42,6 +41,7 @@ function urlCheck() {
 		}
 
 		// 기기의 화면에 따라 폰트 사이즈 변경
+		var deviceWidth = screen.width;
 		if (deviceWidth > 767) {
 			document.querySelector("#" + pathArr[1] + ">.use_info").style.fontSize = "13px";
 		} else {

@@ -226,7 +226,7 @@ function BoardFunction(){
 				return false;
 			}
 		}
-		var boardJson = {"title":title, "writer":writer, "date":date, "content":content};
+		/*var boardJson = {"title":title, "writer":writer, "date":date, "content":content};
 		$.ajax({
 			url:"/InquiryBoard/Inquiry.do",
 			type:"post",
@@ -241,10 +241,10 @@ function BoardFunction(){
 				alert("문의실패");
 			    return false;
 			}
-		});
-		//document.InquiryBoardFrm.action = "/InquiryBoard/Inquiry.do";
-		//document.InquiryBoardFrm.method = "post";
-	    //document.InquiryBoardFrm.submit();
+		});*/
+		document.InquiryBoardFrm.action = "/InquiryBoard/Inquiry.do";
+		document.InquiryBoardFrm.method = "post";
+	    document.InquiryBoardFrm.submit();
 	});
 	
 	// 게시글 수정을 위해 유저가 작성했던 게시글 목록으로 
@@ -254,11 +254,7 @@ function BoardFunction(){
 		document.InquiryBoardFrm.method = "post";
 	    document.InquiryBoardFrm.submit();
 	});
-	// 게시글 수정 페이지로
-	/*$("#inquirylist_update").click(function(){
-		var inquirylist_update_data = document.querySelector(".inquirylist_update_data").value;
-		inquiryRevisionResolver(inquirylist_update_data);
-	});*/
+	
 	// 게시글 수정완료 
 	$("#InquiryUpdateBtn").click(function(){
 		var inquiry_update_data = document.querySelector(".updateNum").value;

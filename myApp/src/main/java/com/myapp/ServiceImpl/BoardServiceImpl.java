@@ -17,7 +17,7 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDAOImpl boardDao;
 
 	@Override
-	public int InquiryBoard(Map<String, Object> vo) {
+	public int InquiryBoard(BoardVO vo) {
 		// TODO Auto-generated method stub
 		return boardDao.InquiryBoard(vo);
 	}

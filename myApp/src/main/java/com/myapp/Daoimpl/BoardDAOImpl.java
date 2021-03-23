@@ -15,7 +15,7 @@ public class BoardDAOImpl implements BoardDAO {
 	private SqlSession session = SessionFactoryGenerator.sessionFactoryInstance().openSession();
 
 	@Override
-	public int InquiryBoard(Map<String,Object> bvo) {
+	public int InquiryBoard(BoardVO bvo) {
 
 		int inquiry = session.insert("inquiry", bvo);
 		if (inquiry > 0) {
