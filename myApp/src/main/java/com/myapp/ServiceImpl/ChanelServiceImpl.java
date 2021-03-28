@@ -26,6 +26,14 @@ public class ChanelServiceImpl implements ChanelService {
 	}
 
 	/**
+	 * 채널 생성 중복 확인
+	 */
+	@Override
+	public int findDuplicateChanel(ChanelVO cvo) {
+		// TODO Auto-generated method stub
+		return chanelDAO.findDuplicateChanel(cvo);
+	}
+	/**
 	 * 채널리스트
 	 */
 	@Override

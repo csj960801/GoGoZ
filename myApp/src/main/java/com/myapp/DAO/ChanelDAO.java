@@ -14,5 +14,7 @@ import com.myapp.VO.ChanelVO;
 public interface ChanelDAO {
 	public int ChanelCreate(ChanelVO cvo); // 채널 생성
 
+	public int findDuplicateChanel(ChanelVO cvo);
+	
 	public List<ChanelVO> getChanelList(ChanelVO cvo);// 생성된 모든 채널리스트
 }

@@ -465,17 +465,15 @@
 		top: 7px;
 		left: 70px;
 	}
-	.Chanel_container .Chanel_dd {
-		padding: 0 0 5px;
-	}
-	.Chanel_container .Chanel_dd>a {
+	.chanel_container .chanellist_tbl td>a {
 		color: #333;
-		font-size: 15px;
 	}
-	.Chanel_container .Chanel_dl {
-		height: 700px;
+	.chanel_container .chanellist_thead, .chanel_container .chanellist_tbody,
+		.chanel_container .chanellist_thead tr th {
+		text-align: center;
+		vertical-align: middle;
 	}
-	.Chanel_container .Chanel_dt {
+	.chanel_container .chanel_dt {
 		text-align: center;
 		font-size: 25px;
 		padding: 15px 0;

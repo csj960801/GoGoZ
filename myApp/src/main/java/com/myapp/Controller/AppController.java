@@ -60,20 +60,6 @@ public class AppController {
 	 */
 	@RequestMapping(value = "/index.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String home(HttpServletRequest request, HttpServletResponse response) throws UnknownHostException {
-		// 로그인 5회 실패시 24시간동안 로그인 시도한 ip에서 사용하지못도록 block
-		if (request.getParameter("login") != null) {
-
-			InetAddress ipAddress = InetAddress.getLocalHost();
-			String ip = ipAddress.getHostAddress();
-			log.info("--------------------");
-			log.info("아이피:" + ip + "은 24시간 사용중지.");
-			log.info("--------------------");
-
-			Cookie cookie = new Cookie("loginFailIp", ip);
-			cookie.setMaxAge(24 * 60 * 60);
-			response.addCookie(cookie);
-			return "/NonIndex";
-		}
 		log.info("--------------------");
 		log.info("메인으로 이동합니다.");
 		log.info("--------------------");
@@ -194,7 +180,8 @@ public class AppController {
 				log.info("===================================");
 				boardMap.put("inquiry", inquiryCnt);
 			}
-		} else {
+		}
+		else {
 			boardMap.put("inquiryFail", -1);
 			log.info("===================================");
 			log.info("게시자명이 일치하지않음.");

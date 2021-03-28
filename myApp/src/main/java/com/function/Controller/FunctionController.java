@@ -31,7 +31,7 @@ public class FunctionController {
 	private Logger functionLog = LoggerFactory.getLogger(this.getClass());
 
 	/**
-	 * 채널 생성
+	 * 중복된 채널이 아닐시 채널 생성
 	 * 
 	 * @param chanelMap
 	 * @return
@@ -40,14 +40,36 @@ public class FunctionController {
 	public Map<String, Object> chanelCreate(ChanelVO cvo) {
 		Map<String, Object> chanelcreateMap = new HashMap<String, Object>();
 
-		int chanelCreate = chanelService.ChanelCreate(cvo);
-		if (chanelCreate > -1) {
-			chanelcreateMap.put("chanelMap", chanelCreate);
+		// 채널 중복 확인
+		if (findDuplicateChanel(cvo) > -1) {
+			int chanelCreate = chanelService.ChanelCreate(cvo);
+			if (chanelCreate > -1) {
+				chanelcreateMap.put("chanelMap", chanelCreate);
+				functionLog.info("====================================");
+				functionLog.info("채널 생성자:" + cvo.getChanelMaker());
+				functionLog.info("채널:" + cvo.getChanel());
+				functionLog.info("====================================");
+			}
+		}
+		// 채널 중복시
+		if (findDuplicateChanel(cvo) == -1) {
+			chanelcreateMap.put("chanelMap", -1);
 			functionLog.info("====================================");
-			functionLog.info("채널 생성 되었습니다:" + cvo.getChanel());
+			functionLog.info("채널중복:" + cvo.getChanel());
 			functionLog.info("====================================");
 		}
 		return chanelcreateMap;
+	}
+
+	/**
+	 * 채널 생성 중복체크
+	 * 
+	 * @param cvo
+	 * @return
+	 */
+	public int findDuplicateChanel(ChanelVO cvo) {
+		int findResult = chanelService.findDuplicateChanel(cvo);
+		return findResult;
 	}
 
 	/**
@@ -58,20 +80,18 @@ public class FunctionController {
 	 */
 	@RequestMapping(value = "/Function/ChanelList.bo", method = RequestMethod.POST)
 	public ModelAndView PortList(ChanelVO cvo) {
-		// Map<String, Object> portListMap = new HashMap<String, Object>();
 
 		ModelAndView chanelMAV = new ModelAndView();
 
 		// 저장되어있는 포트들을 클라이언트에서 출력.
 		List<ChanelVO> chanelList = chanelService.getChanelList(cvo);
-		for (ChanelVO list : chanelList) {
-			functionLog.info("===================================");
-			functionLog.info("채널리스트: " + list.getChanel());
-			functionLog.info("===================================");
+		if (chanelList.size() > 0) {
+			chanelMAV.addObject("chanelList", chanelList);
+		} else {
+			chanelMAV.addObject("chanelList", null);
 		}
 
 		chanelMAV.setViewName("/Function/ChanelList");
-		chanelMAV.addObject("chanelList", chanelList);
 		// portListMap.put("chanelList", chanelList);
 		return chanelMAV;
 	}

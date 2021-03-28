@@ -24,6 +24,7 @@
 								<span class="chanel_span">* 생성하실 4자리의 채널번호를 입력해주세요.</span>
 							</p>
 						</div>
+						<input type="hidden" name="chanelMaker" class="chanelMaker" value="${sessionScope.loginName}"/>
 					</form>
 			    </div>	
 				

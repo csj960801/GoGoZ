@@ -22,11 +22,25 @@ public class ChanelDAOImpl implements ChanelDAO {
 	 */
 	@Override
 	public int ChanelCreate(ChanelVO cvo) {
-		// TODO Auto-generated method stub
-		int chanelCreate = session.insert("chanelinsert", cvo);
-		if (chanelCreate > 0) {
-			session.commit();
-			return chanelCreate;
+		// 채널 중복 확인
+		if (findDuplicateChanel(cvo) > -1) {
+			int chanelCreate = session.insert("chanelinsert", cvo);
+			if (chanelCreate > 0) {
+				session.commit();
+				return chanelCreate;
+			}
+		}
+		return -1;
+	}
+
+	/**
+	 * 채널 데이터 중복 확인
+	 */
+	@Override
+	public int findDuplicateChanel(ChanelVO cvo) {
+		ChanelVO chanelvo = session.selectOne("findDuplicateChanel", cvo);
+		if (chanelvo == null) {
+			return 1;
 		}
 		return -1;
 	}
