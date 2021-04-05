@@ -8,8 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myapp.ServiceImpl.ChanelServiceImpl;
@@ -36,8 +38,10 @@ public class FunctionController {
 	 * @param chanelMap
 	 * @return
 	 */
-	@RequestMapping(value = "/Function/ChanelCreate.bo", method = RequestMethod.POST)
-	public Map<String, Object> chanelCreate(ChanelVO cvo) {
+	@ResponseBody
+	@RequestMapping(value = "/Function/ChanelCreate.bo", method = RequestMethod.POST, produces = {
+			"application/json;charset=utf-8" })
+	public Map<String, Object> chanelCreate(@RequestBody ChanelVO cvo) {
 		Map<String, Object> chanelcreateMap = new HashMap<String, Object>();
 
 		// 채널 중복 확인
@@ -52,7 +56,7 @@ public class FunctionController {
 			}
 		}
 		// 채널 중복시
-		if (findDuplicateChanel(cvo) == -1) {
+		else if (findDuplicateChanel(cvo) == -1) {
 			chanelcreateMap.put("chanelMap", -1);
 			functionLog.info("====================================");
 			functionLog.info("채널중복:" + cvo.getChanel());

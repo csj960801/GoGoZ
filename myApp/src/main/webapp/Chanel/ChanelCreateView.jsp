@@ -16,7 +16,7 @@
 		<div class="row chanel_container">
 			<div class="col-md-12- col-xs-12 form-group">
 				<div class="CreateChanel_wrapper">
-					<form id="ChanelFrm" name="chanelFrm">
+					<form id="chanelCreateFrm" name="chanelCreateFrm">
 						<div class="ChenalCreate_wrapper">
 							<label class="chanel_label" for="chanel_label">채널생성</label>
 							<input type="password" class="form-control chanelCreateForm" name="chanel" autocomplete="off"/>

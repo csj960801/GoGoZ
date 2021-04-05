@@ -82,7 +82,7 @@ function MemberFunction() {
 		    url:"/MemberReg/MemberReg.do",
 		    data: JSON.stringify(userdata),
 		    dataType:"json",
-			contentType:"application/json",
+			contentType:"application/json;charset=UTF-8",
 		    type:"post",
 		    success:function(result){
 		    	alert("회원가입 성공~");
@@ -132,7 +132,7 @@ function MemberFunction() {
         	url:"/MemberLog/MemberLog.do",
         	data:JSON.stringify(logindata),
         	dataType:"json",
-        	contentType:"application/json",
+        	contentType:"application/json;charset=utf-8",
           	type:"post",
             success:function(result){
         		alert("로그인 성공~");

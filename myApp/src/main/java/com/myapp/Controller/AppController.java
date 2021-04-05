@@ -58,7 +58,7 @@ public class AppController {
 	 * 
 	 * @throws UnknownHostException
 	 */
-	@RequestMapping(value = "/index.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/index.do")
 	public String home(HttpServletRequest request, HttpServletResponse response) throws UnknownHostException {
 		log.info("--------------------");
 		log.info("메인으로 이동합니다.");
@@ -69,7 +69,8 @@ public class AppController {
 	/**
 	 * 회원가입
 	 */
-	@RequestMapping(value = "/MemberReg/MemberReg.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/MemberReg/MemberReg.do", method = RequestMethod.POST, produces = {
+			"application/json;charset=UTF-8" })
 	@ResponseBody
 	public String MemberReg(MemberVO memberRegvo, @RequestBody Map<String, Object> user) {
 
@@ -180,8 +181,7 @@ public class AppController {
 				log.info("===================================");
 				boardMap.put("inquiry", inquiryCnt);
 			}
-		}
-		else {
+		} else {
 			boardMap.put("inquiryFail", -1);
 			log.info("===================================");
 			log.info("게시자명이 일치하지않음.");

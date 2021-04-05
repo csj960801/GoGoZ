@@ -14,9 +14,27 @@ $(function() {
 	$(".chanelCreateForm").mouseout(function() {
 		var chanelNum = document.querySelector(".chanelCreateForm");
 		if (chanelNum.value.length == 4) {
-			document.chanelFrm.method = "post";
-			document.chanelFrm.action = "/function/Function/ChanelCreate.bo";
-			document.chanelFrm.submit();
+			var chanelMaker = document.querySelector(".chanelMaker").value;
+			
+			$.ajax({
+				url : "/function/Function/ChanelCreate.bo",
+				type : "post",
+				dataType : "json",
+				contentType : "application/json;charset=utf-8",
+				data : JSON.stringify({
+					"chanel": chanelNum.value,
+					"chanelMaker":chanelMaker
+				}),
+				success : function(result) {
+					console.log("result: " + result);
+					alert("채널 생성 성공");
+					window.location.href="/index.do";
+				},
+				error : function(result) {
+					alert("채널 생성 실패");
+					console.log("result: " + result);
+				}
+			});
 		} else {
 			alert("채널 번호 형식에 옳지않습니다.");
 			chanelNum.value = "";
@@ -41,7 +59,7 @@ $(function() {
 		if (check) {
 			document.ChanelListFrm.method = "post";
 			document.ChanelListFrm.action = "/function/Function/ChanelList.bo";
-			//document.ChanelListFrm.action = "/function/Function/test.bo";
+			// document.ChanelListFrm.action = "/function/Function/test.bo";
 			document.ChanelListFrm.submit();
 		}
 		return false;
