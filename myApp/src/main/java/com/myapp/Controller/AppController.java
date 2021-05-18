@@ -69,16 +69,12 @@ public class AppController {
 	/**
 	 * 회원가입
 	 */
-	@RequestMapping(value = "/MemberReg/MemberReg.do", method = RequestMethod.POST, produces = {
-			"application/json;charset=UTF-8" })
-	@ResponseBody
-	public String MemberReg(MemberVO memberRegvo, @RequestBody Map<String, Object> user) {
+	@RequestMapping(value = "/MemberReg/MemberReg.do", method = RequestMethod.POST)
+	public String MemberReg(MemberVO memberRegvo) {
 
 		Map<String, Object> regMap = new HashMap<String, Object>();
 		if (!MemberDuplicateCheck(memberRegvo)) {
-			// regMap.put("MemberReg", memberService.MemberRegister(memberRegvo));
-			regMap.put("MemberReg", memberService.MemberRegister(user));
-
+			regMap.put("MemberReg", memberService.MemberRegister(memberRegvo));
 		} else {
 			regMap.put("duplicated", true);
 		}
@@ -96,22 +92,19 @@ public class AppController {
 	/**
 	 * 로그인
 	 */
-	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST, produces = {
-			"application/json;charset=UTF-8" })
-	@ResponseBody
-	public Map<String, Object> MemberLog(MemberVO loginvo, HttpServletRequest req, HttpServletResponse res,
-			@RequestBody Map<String, Object> user) {
+	@RequestMapping(value = "/MemberLog/MemberLog.do", method = RequestMethod.POST)
+	public Map<String, Object> MemberLog(MemberVO loginvo, HttpServletRequest req, HttpServletResponse res) {
 
 		Map<String, Object> logMap = new HashMap<String, Object>();
-		// boolean login = memberService.MemberLog(loginvo);
-		boolean login = memberService.MemberLog(user);
+		boolean login = memberService.MemberLog(loginvo);
+		// boolean login = memberService.MemberLog(user);
 		logMap.put("login", login);
 
 		// 로그인이 정상적으로 진행되었을 때 session생성
 		if (login) {
 			HttpSession session = req.getSession();
-			session.setAttribute("loginName", user.get("name").toString());
-			session.setAttribute("loginEmail", user.get("email").toString());
+			session.setAttribute("loginName", loginvo.getName());
+			session.setAttribute("loginEmail", loginvo.getEmail());
 		}
 		return logMap;
 	}

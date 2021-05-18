@@ -3,7 +3,7 @@
 
 <mapper namespace="mapper.sql.boardMapper">
 
-	<resultMap id="board" type="boardvo">
+	<resultMap id="board" type="com.myapp.VO.BoardVO">
 		<result property="title" column="BoardTitle" />
 		<result property="writer" column="BoardWriter" />
 		<result property="date" column="BoardDate" />

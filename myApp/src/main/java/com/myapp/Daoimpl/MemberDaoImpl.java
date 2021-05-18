@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.slf4j.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.myapp.DAO.MemberDAO;
@@ -16,17 +17,19 @@ import com.myapp.VO.UpdateVO;
 public class MemberDaoImpl implements MemberDAO {
 
 	private Logger MemberDaolog = LoggerFactory.getLogger(MemberDaoImpl.class);
-	private SqlSession session = SessionFactoryGenerator.sessionFactoryInstance().openSession();
+	
+	@Autowired
+	private SqlSession session;
 
 	/**
 	 * 회원가입
 	 */
 	@Override
-	public boolean MemberRegister(Map<String, Object> user) {
+	public boolean MemberRegister(MemberVO memberRegvo) {
 		// TODO Auto-generated method stub
-		int memberReg = session.insert("MemberRegister", user);
+		int memberReg = session.insert("MemberRegister", memberRegvo);
 		if (memberReg > 0) {
-			session.commit();
+			//session.commit();
 			return true;
 		}
 		return false;
@@ -36,9 +39,9 @@ public class MemberDaoImpl implements MemberDAO {
 	 * 로그인
 	 */
 	@Override
-	public boolean MemberLog(Map<String, Object> user) {
+	public boolean MemberLog(MemberVO logvo) {
 		// TODO Auto-generated method stub
-		MemberVO member = session.selectOne("memberlog", user);
+		MemberVO member = session.selectOne("memberlog", logvo);
 		if (member != null) {
 			return true;
 		}
@@ -97,7 +100,7 @@ public class MemberDaoImpl implements MemberDAO {
 			MemberDaolog.info("============================");
 			MemberDaolog.info("삭제된 이메일:" + email);
 			MemberDaolog.info("============================");
-			session.commit();
+			//session.commit();
 			del = true;
 		}
 		return del;
@@ -112,7 +115,7 @@ public class MemberDaoImpl implements MemberDAO {
 
 		boolean updateflag = false;
 		if (update > 0) {
-			session.commit();
+			//session.commit();
 			MemberDaolog.info("============================");
 			MemberDaolog.info("수정전 이메일:" + vo.getOriginEmail());
 			MemberDaolog.info("수정된 이메일:" + vo.getModifyEmail());

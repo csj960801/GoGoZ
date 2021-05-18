@@ -77,8 +77,8 @@ function MemberFunction() {
 			return false;		
 		}
 		
-		var userdata={"name":name, "email":email};
-		$.ajax({
+		//var userdata={"name":name, "email":email};
+		/*$.ajax({
 		    url:"/MemberReg/MemberReg.do",
 		    data: JSON.stringify(userdata),
 		    dataType:"json",
@@ -91,10 +91,10 @@ function MemberFunction() {
 		    error:function(){
 		     	alert("회원가입 실패했습니다.");				    
 		    }
-		});
-		//document.regFrm.action = "/MemberReg/MemberReg.do";
-		//document.regFrm.method = "post";
-	    //document.regFrm.submit();
+		});*/
+		document.regFrm.action = "/MemberReg/MemberReg.do";
+		document.regFrm.method = "post";
+	    document.regFrm.submit();
 	});
 	
 	// 로그인
@@ -127,7 +127,7 @@ function MemberFunction() {
 			return false;		
 		}		
 		
-		var logindata = {"name":name, "email":email};
+		/*var logindata = {"name":name, "email":email};
         $.ajax({
         	url:"/MemberLog/MemberLog.do",
         	data:JSON.stringify(logindata),
@@ -141,10 +141,10 @@ function MemberFunction() {
         	error:function(){
         		alert("로그인 실패");
         	}
-        });
-		//document.loginFrm.action = "/MemberLog/MemberLog.do?remember="+encodeURI(rememberName);
-		//document.loginFrm.method = "post";
-	    //document.loginFrm.submit();
+        });*/
+		document.loginFrm.action = "/MemberLog/MemberLog.do?remember="+encodeURI(rememberName);
+		document.loginFrm.method = "post";
+	    document.loginFrm.submit();
 	});
     
 	// 로그아웃

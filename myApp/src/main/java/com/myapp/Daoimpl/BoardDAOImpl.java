@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.myapp.DAO.BoardDAO;
@@ -12,16 +13,14 @@ import com.myapp.VO.BoardVO;
 
 @Repository("com.myapp.DAO.BoardDAO")
 public class BoardDAOImpl implements BoardDAO {
-	private SqlSession session = SessionFactoryGenerator.sessionFactoryInstance().openSession();
+
+	@Autowired
+	private SqlSession session;
 
 	@Override
 	public int InquiryBoard(BoardVO bvo) {
 
 		int inquiry = session.insert("inquiry", bvo);
-		if (inquiry > 0) {
-			session.commit();
-		}
-
 		return (inquiry > 0) ? 1 : 0;
 	}
 
@@ -52,9 +51,6 @@ public class BoardDAOImpl implements BoardDAO {
 	public int InquiryUpdate(BoardVO bvo) {
 		// TODO Auto-generated method stub
 		int inquiryupdate = session.update("inquiryUpdate", bvo);
-		if (inquiryupdate > 0) {
-			session.commit();
-		}
 		return inquiryupdate;
 	}
 }

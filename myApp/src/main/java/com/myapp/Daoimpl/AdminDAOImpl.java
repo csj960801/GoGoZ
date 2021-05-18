@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.myapp.DAO.AdminDAO;
@@ -16,7 +17,9 @@ import com.myapp.VO.MemberVO;
 public class AdminDAOImpl implements AdminDAO {
 
 	private Logger adminLogger = LoggerFactory.getLogger(this.getClass());
-	private SqlSession session = SessionFactoryGenerator.sessionFactoryInstance().openSession();
+
+	@Autowired
+	private SqlSession session;
 
 	/**
 	 * 관리자 전용 게시판 데이터 출력
@@ -40,7 +43,7 @@ public class AdminDAOImpl implements AdminDAO {
 			adminLogger.info("============================================");
 			adminLogger.info("삭제완료");
 			adminLogger.info("============================================");
-			session.commit();
+			// session.commit();
 		}
 		return inquirydel;
 	}
@@ -64,7 +67,7 @@ public class AdminDAOImpl implements AdminDAO {
 	public int memberDel(String param) {
 		int memberDel = session.delete("memberDel", param);
 		if (memberDel > 0) {
-			session.commit();
+			// session.commit();
 			adminLogger.info("===================================================");
 			adminLogger.info("회원 '" + param + "'님 이 삭제되었습니다.");
 			adminLogger.info("===================================================");
@@ -79,7 +82,7 @@ public class AdminDAOImpl implements AdminDAO {
 	public int memberUpdate(MemberVO mvo) {
 		int memberUpdate = session.update("memberUpdate", mvo);
 		if (memberUpdate > 0) {
-			session.commit();
+			// session.commit();
 			adminLogger.info("===================================================");
 			adminLogger.info("회원 '" + mvo.getName() + "'님의 정보가 수정 되었습니다.");
 			adminLogger.info("===================================================");

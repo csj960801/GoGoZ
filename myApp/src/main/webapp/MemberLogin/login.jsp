@@ -66,7 +66,7 @@
 										<td colspan="2" align="center">
 											<!-- 네이버아이디로로그인 버튼 노출 영역-->
 											<div id="naver_id_login"></div>
-											<script type="text/javascript">
+											<!-- <script type="text/javascript">
 												// Client ID, CallBack URL 삽입
 												var naver_id_login = new naver_id_login(
 														"TKrv0ig5kg0YG8WsH3SA",
@@ -79,7 +79,7 @@
 												naver_id_login.setState(state);
 												naver_id_login.setPopup();
 												naver_id_login.init_naver_id_login();
-											</script>
+											</script> -->
 											
 											<div id="captcha" class="g-recaptcha" data-sitekey="6LfWz0kaAAAAAFoKR_lnDmN75rQMij0df6OokMLw"></div>
 										</td>

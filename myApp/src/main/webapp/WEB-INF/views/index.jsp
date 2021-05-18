@@ -9,7 +9,8 @@
 		<div class="row">
 			<div class="col-md-12 col-xs-12 form-group main-title-wrapper">
 				<form id="mainFrm" name="mainFrm">
-					<h1 class="main-title">GoGoZ</h1>
+					<!-- <h1 class="main-title">GoGoZ</h1> -->
+					<h1 class="main-title"><img src="/Picture/BrandLogo/GoGoZ_2.png" class="img-responsive main_img"></h1>
 					<div class="row banner_row">
 						<div class="col-md-12 hidden-xs">
 							<div class="main_banner_wrapper">

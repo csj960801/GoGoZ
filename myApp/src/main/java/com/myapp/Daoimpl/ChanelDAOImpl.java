@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.myapp.DAO.ChanelDAO;
@@ -15,7 +16,8 @@ import com.myapp.VO.ChanelVO;
 @Repository("com.myapp.DAO.ChanelDAO")
 public class ChanelDAOImpl implements ChanelDAO {
 
-	private SqlSession session = SessionFactoryGenerator.sessionFactoryInstance().openSession();
+	@Autowired
+	private SqlSession session;
 
 	/**
 	 * 채널 데이터 생성
@@ -26,7 +28,7 @@ public class ChanelDAOImpl implements ChanelDAO {
 		if (findDuplicateChanel(cvo) > -1) {
 			int chanelCreate = session.insert("chanelinsert", cvo);
 			if (chanelCreate > 0) {
-				session.commit();
+				// session.commit();
 				return chanelCreate;
 			}
 		}

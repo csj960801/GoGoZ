@@ -5,18 +5,18 @@
 
 <mapper namespace="mapper.sql.memberMapper">
 
-	<resultMap type="membervo" id="result">
+	<resultMap type="com.myapp.VO.MemberVO" id="result">
 		<result property="name" column="name" />
 		<result property="email" column="email" />
 	</resultMap>
 
 	<!-- 회원가입 -->
-	<insert id="MemberRegister" parameterType="HashMap">
+	<insert id="MemberRegister" parameterType="com.myapp.VO.MemberVO">
 		INSERT INTO member(name,email) VALUES(#{name},#{email})
 	</insert>
 
 	<!-- 로그인 -->
-	<select id="memberlog" resultMap="result" parameterType="HashMap">
+	<select id="memberlog" resultMap="result" parameterType="com.myapp.VO.MemberVO">
 		select name, email from member
 		where email=#{email} and name=#{name}
 	</select>

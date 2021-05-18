@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.myapp.DAO.MusicDAO;
@@ -16,7 +17,9 @@ import com.myapp.VO.MusicVO;
 public class MusicDAOImpl implements MusicDAO {
 
 	private Logger musiclog = LoggerFactory.getLogger(this.getClass());
-	private SqlSession session = SessionFactoryGenerator.sessionFactoryInstance().openSession();
+	
+	@Autowired
+	private SqlSession session;
 	
 	/**
 	 * 업로드된 파일타입 검사 함수(mp3형식이 아닐경우 false)
@@ -46,9 +49,6 @@ public class MusicDAOImpl implements MusicDAO {
 		int uploadInfo = 0;
 		if (FileType(mvo)) {
 			uploadInfo = session.insert("musicinsert", mvo);
-			if (uploadInfo > 0) {
-				session.commit();
-			}
 		}
 		return uploadInfo;
 	}

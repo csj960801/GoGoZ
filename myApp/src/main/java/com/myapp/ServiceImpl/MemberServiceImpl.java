@@ -1,9 +1,5 @@
 package com.myapp.ServiceImpl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +20,15 @@ public class MemberServiceImpl implements MemberCrudService {
 	private MemberDaoImpl mDao;
 
 	@Override
-	public boolean MemberRegister(Map<String, Object> user) {
+	public boolean MemberRegister(MemberVO memberRegvo) {
 		// TODO Auto-generated method stub
-		return mDao.MemberRegister(user);
+		return mDao.MemberRegister(memberRegvo);
 	}
 	
 	@Override
-	public boolean MemberLog(Map<String, Object> user) {
+	public boolean MemberLog(MemberVO logvo) {
 		// TODO Auto-generated method stub
-		return mDao.MemberLog(user);
+		return mDao.MemberLog(logvo);
 	}
 	/**
 	 * @Override public boolean MemberRegister(MemberVO membervo) { return
